@@ -54,8 +54,8 @@ export default function Hero() {
           style={{ transformStyle: "preserve-3d" }}
         >
           {/* Adjusted inset sizes so the rings fit the newly scaled container nicely */}
-          <div className="absolute inset-3 animate-[spin_12s_linear_infinite] rounded-full border-2 border-indigo-500/30 shadow-[0_0_70px_rgba(91,79,245,0.3)] transition-all duration-500 group-hover:border-indigo-400/60 group-hover:shadow-[0_0_110px_rgba(91,79,245,0.6)]" />
-          <div className="absolute inset-5 animate-[spin_16s_linear_infinite_reverse] rounded-full border border-indigo-300/20" />
+          <div className="absolute inset-9 animate-[spin_12s_linear_infinite] rounded-full border-2 border-indigo-500/30 shadow-[0_0_70px_rgba(91,79,245,0.3)] transition-all duration-500 group-hover:border-indigo-400/60 group-hover:shadow-[0_0_110px_rgba(91,79,245,0.6)]" />
+          <div className="absolute inset-10 animate-[spin_16s_linear_infinite_reverse] rounded-full border border-indigo-300/20" />
 
           <div
             className="relative flex h-full w-full items-center justify-center overflow-hidden rounded-full bg-transparent shadow-2xl"
