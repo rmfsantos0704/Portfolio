@@ -38,23 +38,24 @@ export default function Hero() {
   return (
     <section
       id="top"
-      /* Reduced py-12 to py-8 to save more vertical space */
-      className="relative mx-auto w-full max-w-[90rem] min-h-[100dvh] flex flex-col justify-center overflow-hidden px-6 py-8 md:px-10 font-mono"
+      // Reduced top/bottom padding and added min-height to vertically center on the viewport
+      className="relative mx-auto flex min-h-[85vh] w-full max-w-[90rem] flex-col items-center justify-center overflow-hidden px-6 py-12 md:px-10 md:py-16 font-mono"
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
     >
-      <canvas ref={canvasRef} className="pointer-events-none absolute inset-0 z-0 h-full w-full opacity-75" />
+      <canvas ref={canvasRef} className="pointer-events-none absolute inset-0 z-0 h-full w-full opacity-90" />
 
       <div className="relative z-10 flex flex-col items-center text-center">
-        {/* Logo - Scaled down across all breakpoints (e.g. lg:h-52 instead of lg:h-64) */}
+        {/* Logo, centered - Scaled down image container size */}
         <div
-          className="group relative h-24 w-24 shrink-0 sm:h-36 sm:w-36 md:h-44 md:w-44 lg:h-52 lg:w-52 cursor-pointer"
+          className="group relative h-32 w-32 shrink-0 sm:h-40 sm:w-40 md:h-48 md:w-48 lg:h-56 lg:w-56 cursor-pointer"
           onMouseMove={handleImageMouseMove}
           onMouseLeave={handleImageMouseLeave}
           style={{ transformStyle: "preserve-3d" }}
         >
-          <div className="absolute inset-8 animate-[spin_12s_linear_infinite] rounded-full border-2 border-indigo-500/30 shadow-[0_0_70px_rgba(91,79,245,0.3)] transition-all duration-500 group-hover:border-indigo-400/60 group-hover:shadow-[0_0_110px_rgba(91,79,245,0.6)]" />
-          <div className="absolute inset-9 animate-[spin_16s_linear_infinite_reverse] rounded-full border border-indigo-300/20" />
+          {/* Adjusted inset sizes so the rings fit the newly scaled container nicely */}
+          <div className="absolute inset-3 animate-[spin_12s_linear_infinite] rounded-full border-2 border-indigo-500/30 shadow-[0_0_70px_rgba(91,79,245,0.3)] transition-all duration-500 group-hover:border-indigo-400/60 group-hover:shadow-[0_0_110px_rgba(91,79,245,0.6)]" />
+          <div className="absolute inset-5 animate-[spin_16s_linear_infinite_reverse] rounded-full border border-indigo-300/20" />
 
           <div
             className="relative flex h-full w-full items-center justify-center overflow-hidden rounded-full bg-transparent shadow-2xl"
@@ -68,7 +69,7 @@ export default function Hero() {
                 onError={() => setImgError(true)}
               />
             ) : (
-              <div className="flex h-full w-full items-center justify-center font-mono text-3xl text-slate-500 bg-slate-800">
+              <div className="flex h-full w-full items-center justify-center font-mono text-2xl md:text-3xl text-slate-500 bg-slate-800">
                 {profile.firstName[0]}
                 {profile.lastName[0]}
               </div>
@@ -76,12 +77,12 @@ export default function Hero() {
           </div>
         </div>
 
-        {/* Small eyebrow label - tighter margins, slightly smaller text */}
-        <p className="mt-4 text-[10px] font-semibold uppercase tracking-[0.4em] text-indigo-300/80 sm:text-xs">
+        {/* Small eyebrow label - Reduced top margin */}
+        <p className="mt-6 text-[10px] sm:text-xs font-semibold uppercase tracking-[0.4em] text-indigo-300/80">
           Full-Stack Developer
         </p>
 
-        {/* Name - font sizes scaled down one tier, reduced top margin */}
+        {/* Name - Stepped down Tailwind font sizes by one level */}
         <h1 className="mt-2 text-4xl font-bold tracking-tight text-white sm:text-5xl md:text-6xl lg:text-7xl leading-tight">
           {profile.firstName}{" "}
           <span className="bg-gradient-to-r from-indigo-400 to-indigo-600 bg-clip-text text-transparent">
@@ -89,21 +90,21 @@ export default function Hero() {
           </span>
         </h1>
 
-        {/* Small subtitle - tighter margins */}
-        <p className="mt-3 text-[10px] font-semibold uppercase tracking-[0.4em] text-slate-400 sm:text-xs">
-          Laravel &middot; MERN &middot; Full-Stack
+        {/* Small subtitle */}
+        <p className="mt-3 text-[10px] sm:text-xs font-semibold uppercase tracking-[0.4em] text-slate-400">
+          Laravel &middot; Blade &middot; Full-Stack
         </p>
 
-        {/* Tagline - reduced top margin and font size */}
-        <p className="mt-4 max-w-2xl text-sm sm:text-base md:text-lg leading-relaxed text-slate-300">
+        {/* Description - Reduced font size and top margin */}
+        <p className="mt-6 max-w-2xl text-base sm:text-lg leading-relaxed text-slate-300">
           {profile.tagline}
         </p>
 
-        {/* Buttons - reduced gap, padding, and text size */}
-        <div className="mt-6 flex flex-wrap items-center justify-center gap-3 sm:gap-4">
+        {/* Buttons - Reduced padding, gap, and margins */}
+        <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
           <a
             href="#projects"
-            className="group relative overflow-hidden rounded-full border border-indigo-500/50 bg-indigo-500/10 px-5 py-2.5 sm:px-6 sm:py-3 text-xs sm:text-sm font-bold text-white backdrop-blur-sm transition-all duration-300 hover:bg-indigo-500/20 hover:shadow-[0_0_30px_-5px_rgba(91,79,245,0.4)]"
+            className="group relative overflow-hidden rounded-full border border-indigo-500/50 bg-indigo-500/10 px-6 py-3 text-sm font-bold text-white backdrop-blur-sm transition-all duration-300 hover:bg-indigo-500/20 hover:shadow-[0_0_30px_-5px_rgba(91,79,245,0.4)]"
           >
             Explore Work
           </a>
@@ -111,14 +112,14 @@ export default function Hero() {
             href={profile.github}
             target="_blank"
             rel="noreferrer"
-            className="group flex items-center gap-2 rounded-full border border-white/20 bg-white/5 px-5 py-2.5 sm:px-6 sm:py-3 text-xs sm:text-sm font-bold text-white backdrop-blur-sm transition-all duration-300 hover:bg-white/10"
+            className="group flex items-center gap-2 rounded-full border border-white/20 bg-white/5 px-6 py-3 text-sm font-bold text-white backdrop-blur-sm transition-all duration-300 hover:bg-white/10"
           >
-            <GithubIcon className="h-4 w-4 sm:h-5 sm:w-5 transition-transform duration-300 group-hover:rotate-12" />
+            <GithubIcon className="h-5 w-5 transition-transform duration-300 group-hover:rotate-12" />
             GitHub
           </a>
           <a
             href="#contact"
-            className="rounded-full border border-indigo-200/40 px-5 py-2.5 sm:px-6 sm:py-3 text-xs sm:text-sm font-semibold uppercase tracking-wider text-slate-300 transition-all duration-300 hover:border-indigo-400 hover:text-white"
+            className="rounded-full border border-indigo-200/40 px-5 py-2.5 text-sm font-semibold uppercase tracking-wider text-slate-300 transition-all duration-300 hover:border-indigo-400 hover:text-white"
           >
             Hire Me
           </a>
