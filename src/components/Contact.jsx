@@ -47,22 +47,22 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="border-t border-white/5 py-24">
-      <div className="mx-auto max-w-3xl px-6 md:px-10">
-        <div className="rounded-3xl border border-white/5 bg-surface p-8 shadow-[0_0_80px_-30px_rgba(91,79,245,0.35)] sm:p-12">
-          <h2 className="text-center font-display text-3xl font-semibold text-white sm:text-4xl">
+    <section id="contact" className="border-t border-white/5 py-14">
+      <div className="mx-auto max-w-xl px-6 md:px-8">
+        <div className="rounded-2xl border border-white/5 bg-surface p-6 shadow-[0_0_60px_-30px_rgba(91,79,245,0.35)] sm:p-8">
+          <h2 className="text-center font-display text-2xl font-semibold text-white sm:text-3xl">
             Let&apos;s Build Something
           </h2>
-          <p className="mt-3 text-center text-muted">
+          <p className="mt-2 text-center text-sm text-muted">
             Have a project in mind or just want to chat about NFC tech?
           </p>
 
-          <form onSubmit={handleSubmit} className="mt-10 space-y-6">
-            <div className="grid gap-6 sm:grid-cols-2">
+          <form onSubmit={handleSubmit} className="mt-6 space-y-4">
+            <div className="grid gap-4 sm:grid-cols-2">
               <div>
                 <label
                   htmlFor="name"
-                  className="mb-2 block text-xs font-bold uppercase tracking-wider text-slate-400"
+                  className="mb-1.5 block text-xs font-bold uppercase tracking-wider text-slate-400"
                 >
                   Name
                 </label>
@@ -74,13 +74,13 @@ export default function Contact() {
                   value={form.name}
                   onChange={handleChange}
                   placeholder="Your Name"
-                  className="w-full rounded-lg border border-white/10 bg-bg px-4 py-3 text-sm text-white placeholder-slate-500 outline-none transition-colors hover:border-white/20 focus:border-indigo-2"
+                  className="w-full rounded-lg border border-white/10 bg-bg px-3 py-2 text-sm text-white placeholder-slate-500 outline-none transition-colors hover:border-white/20 focus:border-indigo-2"
                 />
               </div>
               <div>
                 <label
                   htmlFor="email"
-                  className="mb-2 block text-xs font-bold uppercase tracking-wider text-slate-400"
+                  className="mb-1.5 block text-xs font-bold uppercase tracking-wider text-slate-400"
                 >
                   Email
                 </label>
@@ -92,7 +92,7 @@ export default function Contact() {
                   value={form.email}
                   onChange={handleChange}
                   placeholder="email@example.com"
-                  className="w-full rounded-lg border border-white/10 bg-bg px-4 py-3 text-sm text-white placeholder-slate-500 outline-none transition-colors hover:border-white/20 focus:border-indigo-2"
+                  className="w-full rounded-lg border border-white/10 bg-bg px-3 py-2 text-sm text-white placeholder-slate-500 outline-none transition-colors hover:border-white/20 focus:border-indigo-2"
                 />
               </div>
             </div>
@@ -100,7 +100,7 @@ export default function Contact() {
             <div>
               <label
                 htmlFor="message"
-                className="mb-2 block text-xs font-bold uppercase tracking-wider text-slate-400"
+                className="mb-1.5 block text-xs font-bold uppercase tracking-wider text-slate-400"
               >
                 Message
               </label>
@@ -108,18 +108,18 @@ export default function Contact() {
                 id="message"
                 name="message"
                 required
-                rows={5}
+                rows={3}
                 value={form.message}
                 onChange={handleChange}
                 placeholder="Tell me about your project..."
-                className="w-full resize-none rounded-lg border border-white/10 bg-bg px-4 py-3 text-sm text-white placeholder-slate-500 outline-none transition-colors hover:border-white/20 focus:border-indigo-2"
+                className="w-full resize-none rounded-lg border border-white/10 bg-bg px-3 py-2 text-sm text-white placeholder-slate-500 outline-none transition-colors hover:border-white/20 focus:border-indigo-2"
               />
             </div>
 
             <button
               type="submit"
               disabled={status === "sending"}
-              className="w-full rounded-lg bg-indigo px-6 py-4 text-sm font-bold text-white shadow-lg shadow-indigo/40 transition-transform hover:-translate-y-0.5 disabled:cursor-not-allowed disabled:opacity-60"
+              className="w-full rounded-lg bg-indigo px-6 py-3 text-sm font-bold text-white shadow-lg shadow-indigo/40 transition-transform hover:-translate-y-0.5 disabled:cursor-not-allowed disabled:opacity-60"
             >
               {status === "sending" ? "Sending..." : "Send Message"}
             </button>
@@ -137,7 +137,7 @@ export default function Contact() {
             )}
           </form>
 
-          <div className="mt-10 flex justify-center gap-8 border-t border-white/5 pt-8 text-sm font-medium text-slate-300">
+          <div className="mt-6 flex justify-center gap-6 border-t border-white/5 pt-6 text-sm font-medium text-slate-300">
             <a
               href={profile.github}
               target="_blank"
