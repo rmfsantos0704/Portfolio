@@ -92,7 +92,7 @@ export default function Hero() {
 
         {/* Small subtitle */}
         <p className="mt-3 text-[10px] sm:text-xs font-semibold uppercase tracking-[0.4em] text-slate-400">
-          Laravel &middot; Blade &middot; Full-Stack
+          Laravel &middot; MERN &middot; Full-Stack
         </p>
 
         {/* Description - Reduced font size and top margin */}
