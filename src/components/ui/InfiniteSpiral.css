@@ -1,0 +1,57 @@
+.infinite-spiral {
+  position: relative;
+  width: 100%;
+  height: 480px;
+  overflow: hidden;
+  perspective: var(--infinite-spiral-perspective, 1000px);
+}
+
+.infinite-spiral::before,
+.infinite-spiral::after {
+  position: absolute;
+  right: 0;
+  left: 0;
+  z-index: 2;
+  height: 22%;
+  pointer-events: none;
+  content: "";
+}
+
+.infinite-spiral::before {
+  top: 0;
+  background: linear-gradient(to bottom, var(--color-bg, #090c14), transparent);
+}
+
+.infinite-spiral::after {
+  bottom: 0;
+  background: linear-gradient(to top, var(--color-bg, #090c14), transparent);
+}
+
+.infinite-spiral__stage {
+  position: absolute;
+  inset: 0;
+  transform-style: preserve-3d;
+}
+
+.infinite-spiral__item {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: block;
+  overflow: hidden;
+  border: 1px solid rgb(255 255 255 / 0.15);
+  background: var(--color-surface, #0e1220);
+  box-shadow: 0 12px 30px rgb(0 0 0 / 0.35);
+  transform-origin: center;
+  will-change: transform, opacity, filter;
+}
+
+.infinite-spiral__image {
+  display: block;
+}
+
+@media (max-width: 640px) {
+  .infinite-spiral {
+    height: 360px;
+  }
+}

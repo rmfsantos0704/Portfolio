@@ -1,0 +1,135 @@
+.depth-carousel {
+  position: relative;
+  width: 100%;
+  min-height: 500px;
+  overflow: hidden;
+  perspective: var(--dc-perspective, 1400px);
+  outline: none;
+  touch-action: pan-y;
+  user-select: none;
+}
+
+.depth-carousel__stage {
+  position: absolute;
+  inset: 0;
+  transform-style: preserve-3d;
+}
+
+.depth-carousel__card {
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  overflow: hidden;
+  border: 1px solid rgb(255 255 255 / 0.12);
+  background: var(--color-surface, #0e1220);
+  box-shadow: 0 20px 45px rgb(0 0 0 / 0.35);
+  cursor: pointer;
+  transform-style: preserve-3d;
+  will-change: transform, opacity, filter;
+}
+
+.depth-carousel__img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: contain;
+  background: var(--color-surface, #0e1220);
+}
+
+.depth-carousel__tint {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  mix-blend-mode: multiply;
+}
+
+.depth-carousel__zoom {
+  position: absolute;
+  right: 0.75rem;
+  bottom: 0.75rem;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.45rem 0.65rem;
+  border: 1px solid rgb(255 255 255 / 0.2);
+  border-radius: 999px;
+  background: rgb(9 12 20 / 0.82);
+  color: white;
+  font-size: 0.7rem;
+  font-weight: 700;
+  cursor: pointer;
+  backdrop-filter: blur(8px);
+  transition: border-color 180ms ease, background 180ms ease;
+}
+
+.depth-carousel__zoom:hover {
+  border-color: rgb(34 211 238 / 0.8);
+  background: rgb(8 47 73 / 0.9);
+}
+
+.depth-carousel__arrow {
+  position: absolute;
+  top: 45%;
+  z-index: 3000;
+  display: grid;
+  width: 42px;
+  height: 42px;
+  place-items: center;
+  border: 1px solid rgb(255 255 255 / 0.16);
+  border-radius: 999px;
+  background: rgb(14 18 32 / 0.82);
+  color: white;
+  cursor: pointer;
+  transform: translateY(-50%);
+  transition: border-color 180ms ease, background 180ms ease;
+}
+
+.depth-carousel__arrow:hover {
+  border-color: rgb(124 126 255 / 0.8);
+  background: rgb(91 79 245 / 0.25);
+}
+
+.depth-carousel__arrow--prev {
+  left: 1rem;
+}
+
+.depth-carousel__arrow--next {
+  right: 1rem;
+}
+
+.depth-carousel__dots {
+  position: absolute;
+  bottom: 0.5rem;
+  left: 50%;
+  z-index: 3000;
+  display: flex;
+  gap: 0.4rem;
+  transform: translateX(-50%);
+}
+
+.depth-carousel__dot {
+  width: 7px;
+  height: 7px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: rgb(255 255 255 / 0.3);
+  cursor: pointer;
+}
+
+.depth-carousel__dot.is-active {
+  background: var(--color-cyan, #22d3ee);
+  box-shadow: 0 0 12px rgb(34 211 238 / 0.7);
+}
+
+@media (max-width: 640px) {
+  .depth-carousel {
+    min-height: 380px;
+  }
+
+  .depth-carousel__arrow {
+    width: 36px;
+    height: 36px;
+  }
+}

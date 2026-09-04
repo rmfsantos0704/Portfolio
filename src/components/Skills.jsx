@@ -1,6 +1,8 @@
 import { useEffect, useRef, useState } from "react";
-import { ChevronLeft, ChevronRight, Video, Heart, Coins, Radio, Smartphone, Layers } from "lucide-react";
+import { Link } from "react-router-dom";
+import { ChevronLeft, ChevronRight, Video, Heart, Coins, Radio, Smartphone, Layers, Award } from "lucide-react";
 import { skills } from "../data/content";
+import SpotlightCard from "./ui/SpotlightCard";
 
 const icons = {
   laravel: Video,
@@ -43,13 +45,27 @@ export default function Skills() {
   return (
     <section ref={sectionRef} id="skills" className="relative border-t border-white/5 py-24">
       <div className="mx-auto max-w-6xl px-6 md:px-10">
-        <h2
-          className={`text-center font-display text-3xl font-semibold tracking-wide text-white sm:text-4xl transition-all duration-700 ease-out ${
-            visible ? "translate-y-0 opacity-100" : "translate-y-6 opacity-0"
-          }`}
-        >
-          EXPERTISE
-        </h2>
+        <div className="flex flex-col items-center gap-4">
+          <h2
+            className={`text-center font-display text-3xl font-semibold tracking-wide text-white sm:text-4xl transition-all duration-700 ease-out ${
+              visible ? "translate-y-0 opacity-100" : "translate-y-6 opacity-0"
+            }`}
+          >
+            EXPERTISE
+          </h2>
+
+          {/* Entry point into the Certificates page */}
+          <Link
+            to="/certificates"
+            className={`group inline-flex items-center gap-2 rounded-full border border-white/15 bg-surface px-4 py-2 text-xs font-semibold uppercase tracking-wider text-slate-300 transition-all duration-300 hover:border-indigo-2/60 hover:bg-indigo-2/10 hover:text-white ${
+              visible ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0"
+            }`}
+            style={{ transitionDelay: visible ? "150ms" : "0ms" }}
+          >
+            <Award size={14} className="text-indigo-2 transition-transform duration-300 group-hover:scale-110" />
+            View Certifications
+          </Link>
+        </div>
 
         <div className="relative mt-14">
           <button
@@ -67,11 +83,12 @@ export default function Skills() {
             {skills.map((skill, i) => {
               const Icon = icons[skill.id];
               return (
-                <div
+                <SpotlightCard
                   key={skill.id}
-                  className={`group w-72 shrink-0 rounded-2xl border border-white/5 bg-surface p-8 transition-all duration-500 ease-out hover:-translate-y-2 hover:border-indigo-2/30 hover:shadow-[0_20px_50px_-20px_rgba(91,79,245,0.4)] ${
+                  className={`group w-72 shrink-0 border-white/5 bg-surface transition-all duration-500 ease-out hover:-translate-y-2 hover:border-indigo-2/30 hover:shadow-[0_20px_50px_-20px_rgba(91,79,245,0.4)] ${
                     visible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
                   }`}
+                  spotlightColor="rgba(34, 211, 238, 0.2)"
                   style={{ transitionDelay: visible ? `${i * 100}ms` : "0ms" }}
                 >
                   <div
@@ -85,7 +102,7 @@ export default function Skills() {
                   <p className="mt-3 text-sm leading-relaxed text-muted">
                     {skill.description}
                   </p>
-                </div>
+                </SpotlightCard>
               );
             })}
           </div>

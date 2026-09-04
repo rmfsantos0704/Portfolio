@@ -1,6 +1,7 @@
 import { useState } from "react";
 import emailjs from "@emailjs/browser";
 import { profile } from "../data/content";
+import SplitFlapText from "@/components/ui/SplitFlapText";
 
 const SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
 const TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
@@ -50,10 +51,21 @@ export default function Contact() {
     <section id="contact" className="border-t border-white/5 py-14">
       <div className="mx-auto max-w-xl px-6 md:px-8">
         <div className="rounded-2xl border border-white/5 bg-surface p-6 shadow-[0_0_60px_-30px_rgba(91,79,245,0.35)] sm:p-8">
-          <h2 className="text-center font-display text-2xl font-semibold text-white sm:text-3xl">
-            Let&apos;s Build Something
-          </h2>
-          <p className="mt-2 text-center text-sm text-muted">
+          <div className="flex justify-center">
+            <SplitFlapText
+              words={["LETS BUILD", "GET IN TOUCH"]}
+              fontSize={22}
+              flipDuration={0.1}
+              stagger={0.05}
+              cycleDelay={2600}
+              tileColor="#1e1b4b"
+              textColor="#e0e7ff"
+              tileRadius={6}
+              gap={4}
+              className="font-display"
+            />
+          </div>
+          <p className="mt-3 text-center text-sm text-muted">
             Have a project in mind or just want to chat about NFC tech?
           </p>
 

@@ -12,7 +12,8 @@ export default function Navbar() {
   const rightLinks = navLinks.slice(half);
 
   const NavLink = ({ link }) => (
-    <a
+    // FIX: Added missing <a
+    <a 
       href={link.href}
       className="group relative text-sm font-semibold uppercase tracking-wider text-slate-200 transition-colors hover:text-white"
     >
@@ -33,7 +34,8 @@ export default function Navbar() {
         </div>
 
         {/* Logo, centered on desktop */}
-        <a
+        {/* FIX: Added missing <a */}
+        <a 
           href="#top"
           className="group flex h-11 w-11 items-center justify-center justify-self-start rounded-full border border-white/15 font-display text-xl font-semibold tracking-tight text-white transition-all duration-300 hover:border-indigo-2/60 hover:shadow-[0_0_20px_-4px_rgba(91,79,245,0.6)] md:mx-10 md:justify-self-center"
         >
@@ -45,7 +47,9 @@ export default function Navbar() {
           {rightLinks.map((link) => (
             <NavLink key={link.href} link={link} />
           ))}
-          <a
+          
+          {/* FIX: Added missing <a */}
+          <a 
             href="#contact"
             className="rounded-lg border border-indigo-2/40 px-4 py-2 text-sm font-semibold uppercase tracking-wider text-indigo-2 transition-all duration-200 hover:-translate-y-0.5 hover:border-indigo-2 hover:bg-indigo-2/10 hover:text-indigo-300"
           >
@@ -67,7 +71,8 @@ export default function Navbar() {
         <div className="border-t border-white/5 bg-bg px-6 py-4 md:hidden">
           <div className="flex flex-col gap-4">
             {navLinks.map((link) => (
-              <a
+              // FIX: Added missing <a
+              <a 
                 key={link.href}
                 href={link.href}
                 onClick={() => setOpen(false)}
@@ -76,7 +81,9 @@ export default function Navbar() {
                 {link.label}
               </a>
             ))}
-            <a
+            
+            {/* FIX: Added missing <a */}
+            <a 
               href="#contact"
               onClick={() => setOpen(false)}
               className="text-sm font-semibold uppercase tracking-wider text-indigo-2"

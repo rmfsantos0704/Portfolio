@@ -2,7 +2,7 @@ export const profile = {
   firstName: "Russel",
   lastName: "Santos",
   tagline:
-    "A Full-Stack Developer crafting web and mobile experiences across Laravel, MERN, and React Native, with a focus on real-time systems and hardware-level precision.",
+    "A Full-Stack Developer specializing in the traditional Laravel Blade stack, creating robust applications with hardware-level precision.",
   github: "https://github.com/rmfsantos0704",
   linkedin: "https://www.linkedin.com/in/russel-santos-36720b3a3/",
   email: "santosrussel0704@gmail.com",
@@ -127,7 +127,7 @@ export const projects = [
     techStack: ["Manual QA", "Test Case Design", "NLP Testing", "Bug Tracking"],
     // Add your screenshot URLs here once uploaded, in the order you want them to appear in the slideshow.
     screenshots: [
-      "/TatAI/screenshot-1.png",
+           "/TatAI/screenshot-1.png",
       "/TatAI/screenshot-2.png",
       "/TatAI/screenshot-3.png",
       "/TatAI/screenshot-4.png",
@@ -137,6 +137,21 @@ export const projects = [
     ],
   },
 ];
+
+// Screenshots of your certificates, served from public/Certificates.
+// Add or remove entries here — the Certificates section renders whatever is in this array.
+export const certificates = [
+  { file: "Screenshot 2026-09-04 130223.png", title: "Certificate" },
+  { file: "Screenshot 2026-09-04 130228.png", title: "Certificate" },
+  { file: "Screenshot 2026-09-04 130232.png", title: "Certificate" },
+  { file: "Screenshot 2026-09-04 130238.png", title: "Certificate" },
+  { file: "Screenshot 2026-09-04 130306.png", title: "Certificate" },
+  { file: "Screenshot 2026-09-04 130314.png", title: "Certificate" },
+  { file: "Screenshot 2026-09-04 130322.png", title: "Certificate" },
+  { file: "Screenshot 2026-09-04 130451.png", title: "Certificate" },
+  { file: "Screenshot 2026-09-04 130507.png", title: "Certificate" },
+  { file: "Screenshot 2026-09-04 130515.png", title: "Certificate" },
+].map((c) => ({ ...c, src: `/Certificates/${c.file}` }));
 
 export const navLinks = [
   { label: "About", href: "#about" },

@@ -12,7 +12,7 @@ export default function ProjectDetail() {
     window.scrollTo({ top: 0, left: 0, behavior: "instant" });
   }, [id]);
 
-  if (!project) return <Navigate to="/" replace />;
+  if (!project) return <Navigate to="/portfolio" replace />;
 
   const otherProjects = projects.filter((p) => p.id !== id);
 
@@ -20,7 +20,7 @@ export default function ProjectDetail() {
     <>
       <header className="mx-auto flex max-w-5xl items-center justify-between px-6 py-8 md:px-10">
         <Link
-          to="/"
+          to="/portfolio"
           className="group flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-slate-300 transition-colors hover:text-white"
         >
           <span className="flex h-8 w-8 items-center justify-center rounded-full border border-white/15 transition-all duration-200 group-hover:-translate-x-1 group-hover:border-indigo-2 group-hover:bg-indigo-2/10">
@@ -28,7 +28,7 @@ export default function ProjectDetail() {
           </span>
           Back to Portfolio
         </Link>
-        <Link to="/" className="font-display text-lg font-semibold text-white/70 transition-colors hover:text-white">
+        <Link to="/portfolio" className="font-display text-lg font-semibold text-white/70 transition-colors hover:text-white">
           RS<span className="text-indigo-2">.</span>
         </Link>
       </header>

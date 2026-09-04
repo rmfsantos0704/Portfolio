@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { profile } from "../data/content";
 import { useCanvasWaves } from "../hooks/useCanvasWaves";
+import WarpText from "./ui/WarpText";
 
 function GithubIcon(props) {
   return (
@@ -48,13 +49,15 @@ export default function Hero() {
       <div className="relative z-10 flex flex-col items-center text-center">
         {/* Logo, centered - Scaled down image container size */}
         <div
-          className="group relative h-32 w-32 shrink-0 sm:h-40 sm:w-40 md:h-48 md:w-48 lg:h-56 lg:w-56 cursor-pointer"
+          className="group relative h-32 w-32 shrink-0 cursor-pointer sm:h-40 sm:w-40 md:h-48 md:w-48 lg:h-56 lg:w-56"
           onMouseMove={handleImageMouseMove}
           onMouseLeave={handleImageMouseLeave}
           style={{ transformStyle: "preserve-3d" }}
         >
-          {/* Adjusted inset sizes so the rings fit the newly scaled container nicely */}
-          <div className="absolute inset-9 animate-[spin_12s_linear_infinite] rounded-full border-2 border-indigo-500/30 shadow-[0_0_70px_rgba(91,79,245,0.3)] transition-all duration-500 group-hover:border-indigo-400/60 group-hover:shadow-[0_0_110px_rgba(91,79,245,0.6)]" />
+          <div
+            className="absolute inset-9 animate-[spin_12s_linear_infinite] rounded-full border-2 border-indigo-500/30 shadow-[0_0_70px_rgba(91,79,245,0.3)] transition-all duration-500 group-hover:border-indigo-400/60 group-hover:shadow-[0_0_110px_rgba(91,79,245,0.6)]"
+          >
+          </div>
           <div className="absolute inset-10 animate-[spin_16s_linear_infinite_reverse] rounded-full border border-indigo-300/20" />
 
           <div
@@ -82,13 +85,17 @@ export default function Hero() {
           Full-Stack Developer
         </p>
 
-        {/* Name - Stepped down Tailwind font sizes by one level */}
-        <h1 className="mt-2 text-4xl font-bold tracking-tight text-white sm:text-5xl md:text-6xl lg:text-7xl leading-tight">
-          {profile.firstName}{" "}
-          <span className="bg-gradient-to-r from-indigo-400 to-indigo-600 bg-clip-text text-transparent">
-            {profile.lastName}
-          </span>
-        </h1>
+        {/* Animated name */}
+        <div className="mt-2 h-20 w-full min-w-0 sm:h-24 md:h-28 lg:h-32">
+          <WarpText
+            text={`${profile.firstName} ${profile.lastName}`}
+            className="h-full w-full"
+            color="#a5b4fc"
+            fontSize="clamp(2.25rem, 7vw, 4.5rem)"
+            fontWeight={700}
+            letterSpacing="-0.03em"
+          />
+        </div>
 
         {/* Small subtitle */}
         <p className="mt-3 text-[10px] sm:text-xs font-semibold uppercase tracking-[0.4em] text-slate-400">
