@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { profile } from "../data/content";
 import { useCanvasWaves } from "../hooks/useCanvasWaves";
 import WarpText from "./ui/WarpText";
@@ -39,26 +40,24 @@ export default function Hero() {
   return (
     <section
       id="top"
-      // Reduced top/bottom padding and added min-height to vertically center on the viewport
-      className="relative mx-auto flex min-h-[85vh] w-full max-w-[90rem] flex-col items-center justify-center overflow-hidden px-6 py-12 md:px-10 md:py-16 font-mono"
+      // h-[100dvh] + overflow-hidden: locks the section to exactly one viewport tall in
+      // Chrome (dvh accounts for the mobile/desktop UI chrome), no scroll, content scaled to fit.
+      className="relative mx-auto flex h-[100dvh] w-full max-w-[90rem] flex-col items-start justify-center overflow-hidden px-8 py-24 font-mono sm:px-12 lg:px-20"
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
     >
-      <canvas ref={canvasRef} className="pointer-events-none absolute inset-0 z-0 h-full w-full opacity-90" />
+      <canvas ref={canvasRef} className="pointer-events-none fixed inset-0 z-0 h-full w-full opacity-90" />
 
-      <div className="relative z-10 flex flex-col items-center text-center">
-        {/* Logo, centered - Scaled down image container size */}
+      <div className="relative z-10 flex max-h-full w-full max-w-4xl flex-col items-start justify-center text-left">
+        {/* Logo */}
         <div
-          className="group relative h-32 w-32 shrink-0 cursor-pointer sm:h-40 sm:w-40 md:h-48 md:w-48 lg:h-56 lg:w-56"
+          className="group relative h-32 w-32 shrink-0 cursor-pointer sm:h-44 sm:w-44 md:h-52 md:w-52 lg:h-60 lg:w-60"
           onMouseMove={handleImageMouseMove}
           onMouseLeave={handleImageMouseLeave}
           style={{ transformStyle: "preserve-3d" }}
         >
-          <div
-            className="absolute inset-9 animate-[spin_12s_linear_infinite] rounded-full border-2 border-indigo-500/30 shadow-[0_0_70px_rgba(91,79,245,0.3)] transition-all duration-500 group-hover:border-indigo-400/60 group-hover:shadow-[0_0_110px_rgba(91,79,245,0.6)]"
-          >
-          </div>
-          <div className="absolute inset-10 animate-[spin_16s_linear_infinite_reverse] rounded-full border border-indigo-300/20" />
+          <div className="absolute inset-8 animate-[spin_12s_linear_infinite] rounded-full border-2 border-indigo-500/30 shadow-[0_0_70px_rgba(91,79,245,0.3)] transition-all duration-500 group-hover:border-indigo-400/60 group-hover:shadow-[0_0_110px_rgba(91,79,245,0.6)]" />
+          <div className="absolute inset-9 animate-[spin_16s_linear_infinite_reverse] rounded-full border border-indigo-300/20" />
 
           <div
             className="relative flex h-full w-full items-center justify-center overflow-hidden rounded-full bg-transparent shadow-2xl"
@@ -72,7 +71,7 @@ export default function Hero() {
                 onError={() => setImgError(true)}
               />
             ) : (
-              <div className="flex h-full w-full items-center justify-center font-mono text-2xl md:text-3xl text-slate-500 bg-slate-800">
+              <div className="flex h-full w-full items-center justify-center font-mono text-3xl md:text-4xl text-slate-500 bg-slate-800">
                 {profile.firstName[0]}
                 {profile.lastName[0]}
               </div>
@@ -80,56 +79,57 @@ export default function Hero() {
           </div>
         </div>
 
-        {/* Small eyebrow label - Reduced top margin */}
-        <p className="mt-6 text-[10px] sm:text-xs font-semibold uppercase tracking-[0.4em] text-indigo-300/80">
+        {/* Small eyebrow label */}
+        <p className="mt-5 text-xs font-semibold uppercase tracking-[0.4em] text-indigo-300/80 sm:text-sm">
           Full-Stack Developer
         </p>
 
         {/* Animated name */}
-        <div className="mt-2 h-20 w-full min-w-0 sm:h-24 md:h-28 lg:h-32">
+        <div className="mt-3 h-24 w-full min-w-0 sm:h-28 md:h-32 lg:h-40">
           <WarpText
             text={`${profile.firstName} ${profile.lastName}`}
             className="h-full w-full"
             color="#a5b4fc"
-            fontSize="clamp(2.25rem, 7vw, 4.5rem)"
+            fontSize="clamp(2.75rem, 8vw, 5.5rem)"
             fontWeight={700}
             letterSpacing="-0.03em"
+            textAlign="left"
           />
         </div>
 
         {/* Small subtitle */}
-        <p className="mt-3 text-[10px] sm:text-xs font-semibold uppercase tracking-[0.4em] text-slate-400">
+        <p className="mt-4 text-xs font-semibold uppercase tracking-[0.4em] text-slate-400 sm:text-sm">
           Laravel &middot; MERN &middot; Full-Stack
         </p>
 
-        {/* Description - Reduced font size and top margin */}
-        <p className="mt-6 max-w-2xl text-base sm:text-lg leading-relaxed text-slate-300">
+        {/* Description */}
+        <p className="mt-5 max-w-2xl text-lg leading-relaxed text-slate-300 line-clamp-3 sm:text-xl sm:line-clamp-none">
           {profile.tagline}
         </p>
 
-        {/* Buttons - Reduced padding, gap, and margins */}
-        <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
-          <a
-            href="#projects"
-            className="group relative overflow-hidden rounded-full border border-indigo-500/50 bg-indigo-500/10 px-6 py-3 text-sm font-bold text-white backdrop-blur-sm transition-all duration-300 hover:bg-indigo-500/20 hover:shadow-[0_0_30px_-5px_rgba(91,79,245,0.4)]"
+        {/* Buttons */}
+        <div className="mt-8 flex flex-wrap items-center justify-start gap-5">
+          <Link
+            to="/projects"
+            className="group relative overflow-hidden rounded-full border border-indigo-500/50 bg-indigo-500/10 px-7 py-3.5 text-sm font-bold text-white backdrop-blur-sm transition-all duration-300 hover:bg-indigo-500/20 hover:shadow-[0_0_30px_-5px_rgba(91,79,245,0.4)] sm:text-base"
           >
             Explore Work
-          </a>
+          </Link>
           <a
             href={profile.github}
             target="_blank"
             rel="noreferrer"
-            className="group flex items-center gap-2 rounded-full border border-white/20 bg-white/5 px-6 py-3 text-sm font-bold text-white backdrop-blur-sm transition-all duration-300 hover:bg-white/10"
+            className="group flex items-center gap-2 rounded-full border border-white/20 bg-white/5 px-7 py-3.5 text-sm font-bold text-white backdrop-blur-sm transition-all duration-300 hover:bg-white/10 sm:text-base"
           >
-            <GithubIcon className="h-5 w-5 transition-transform duration-300 group-hover:rotate-12" />
+            <GithubIcon className="h-5 w-5 transition-transform duration-300 group-hover:rotate-12 sm:h-6 sm:w-6" />
             GitHub
           </a>
-          <a
-            href="#contact"
-            className="rounded-full border border-indigo-200/40 px-5 py-2.5 text-sm font-semibold uppercase tracking-wider text-slate-300 transition-all duration-300 hover:border-indigo-400 hover:text-white"
+          <Link
+            to="/contact"
+            className="rounded-full border border-indigo-200/40 px-6 py-3 text-sm font-semibold uppercase tracking-wider text-slate-300 transition-all duration-300 hover:border-indigo-400 hover:text-white sm:text-base"
           >
             Hire Me
-          </a>
+          </Link>
         </div>
       </div>
     </section>

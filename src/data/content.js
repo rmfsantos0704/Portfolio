@@ -127,7 +127,7 @@ export const projects = [
     techStack: ["Manual QA", "Test Case Design", "NLP Testing", "Bug Tracking"],
     // Add your screenshot URLs here once uploaded, in the order you want them to appear in the slideshow.
     screenshots: [
-           "/TatAI/screenshot-1.png",
+      "/TatAI/screenshot-1.png",
       "/TatAI/screenshot-2.png",
       "/TatAI/screenshot-3.png",
       "/TatAI/screenshot-4.png",
@@ -154,7 +154,7 @@ export const certificates = [
 ].map((c) => ({ ...c, src: `/Certificates/${c.file}` }));
 
 export const navLinks = [
-  { label: "About", href: "#about" },
-  { label: "Skills", href: "#skills" },
-  { label: "Projects", href: "#projects" },
+  { label: "About", href: "/about" },
+  { label: "Skills", href: "/skills" },
+  { label: "Projects", href: "/projects" },
 ];

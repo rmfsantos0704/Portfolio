@@ -119,9 +119,9 @@ const measureLine = (ctx, line, letterSpacing) => {
   return textWidth + Math.max(0, chars.length - 1) * letterSpacing;
 };
 
-const drawLine = (ctx, line, x, y, letterSpacing) => {
+const drawLine = (ctx, line, x, y, letterSpacing, textAlign) => {
   const chars = Array.from(line);
-  let cursor = x - measureLine(ctx, line, letterSpacing) / 2;
+  let cursor = textAlign === 'left' ? x : x - measureLine(ctx, line, letterSpacing) / 2;
 
   chars.forEach((char, index) => {
     ctx.fillText(char, cursor, y);
@@ -191,7 +191,10 @@ const buildTextCanvas = ({ container, width, height, dpr, props }) => {
   }
 
   const startY = height / 2 - (lineHeight * (lines.length - 1)) / 2;
-  lines.forEach((line, index) => drawLine(ctx, line, width / 2, startY + index * lineHeight, letterSpacing));
+  const textX = props.textAlign === 'left' ? 0 : width / 2;
+  lines.forEach((line, index) =>
+    drawLine(ctx, line, textX, startY + index * lineHeight, letterSpacing, props.textAlign)
+  );
 
   return canvas;
 };
@@ -221,6 +224,7 @@ const WarpText = ({
   fontWeight = 800,
   fontFamily = 'inherit',
   letterSpacing = '-0.06em',
+  textAlign = 'center',
   lineHeight = 0.9,
   className = '',
   style
@@ -233,6 +237,7 @@ const WarpText = ({
     fontWeight,
     fontFamily,
     letterSpacing,
+    textAlign,
     lineHeight,
     warpStrength,
     warpScale,
@@ -252,6 +257,7 @@ const WarpText = ({
       fontWeight,
       fontFamily,
       letterSpacing,
+      textAlign,
       lineHeight,
       warpStrength,
       warpScale,
@@ -273,6 +279,7 @@ const WarpText = ({
     fontWeight,
     fontFamily,
     letterSpacing,
+    textAlign,
     lineHeight,
     warpStrength,
     warpScale,

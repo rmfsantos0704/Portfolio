@@ -1,8 +1,9 @@
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { Link } from "react-router-dom";
-import { ChevronLeft, ChevronRight, Video, Heart, Coins, Radio, Smartphone, Layers, Award } from "lucide-react";
+import { Video, Heart, Coins, Radio, Smartphone, Layers, Award } from "lucide-react";
 import { skills } from "../data/content";
 import SpotlightCard from "./ui/SpotlightCard";
+import OptionWheel from "./ui/OptionWheel";
 
 const icons = {
   laravel: Video,
@@ -14,9 +15,11 @@ const icons = {
 };
 
 export default function Skills() {
-  const scrollerRef = useRef(null);
   const sectionRef = useRef(null);
   const [visible, setVisible] = useState(false);
+  const [selectedIndex, setSelectedIndex] = useState(0);
+  const skillOptions = useMemo(() => skills.map((skill) => skill.title), []);
+  const handleSkillChange = useCallback((index) => setSelectedIndex(index), []);
 
   useEffect(() => {
     const el = sectionRef.current;
@@ -36,84 +39,68 @@ export default function Skills() {
     return () => observer.disconnect();
   }, []);
 
-  const scroll = (dir) => {
-    const el = scrollerRef.current;
-    if (!el) return;
-    el.scrollBy({ left: dir * 340, behavior: "smooth" });
-  };
+  const selectedSkill = skills[selectedIndex] ?? skills[0];
+  const SelectedIcon = icons[selectedSkill.id];
 
   return (
-    <section ref={sectionRef} id="skills" className="relative border-t border-white/5 py-24">
-      <div className="mx-auto max-w-6xl px-6 md:px-10">
-        <div className="flex flex-col items-center gap-4">
+    <section ref={sectionRef} id="skills" className="relative flex min-h-[100dvh] items-center border-t border-white/5 py-20 sm:py-24">
+      <div className="mx-auto w-full max-w-7xl px-6 md:px-10">
+        <div className="flex flex-col items-center gap-5">
           <h2
-            className={`text-center font-display text-3xl font-semibold tracking-wide text-white sm:text-4xl transition-all duration-700 ease-out ${
+            className={`text-center font-display text-4xl font-semibold tracking-wide text-white transition-all duration-700 ease-out sm:text-5xl lg:text-6xl ${
               visible ? "translate-y-0 opacity-100" : "translate-y-6 opacity-0"
             }`}
           >
             EXPERTISE
           </h2>
 
-          {/* Entry point into the Certificates page */}
-          <Link
-            to="/certificates"
-            className={`group inline-flex items-center gap-2 rounded-full border border-white/15 bg-surface px-4 py-2 text-xs font-semibold uppercase tracking-wider text-slate-300 transition-all duration-300 hover:border-indigo-2/60 hover:bg-indigo-2/10 hover:text-white ${
-              visible ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0"
-            }`}
-            style={{ transitionDelay: visible ? "150ms" : "0ms" }}
-          >
-            <Award size={14} className="text-indigo-2 transition-transform duration-300 group-hover:scale-110" />
-            View Certifications
-          </Link>
         </div>
 
-        <div className="relative mt-14">
-          <button
-            onClick={() => scroll(-1)}
-            aria-label="Scroll left"
-            className="absolute left-0 top-1/2 z-10 -translate-x-1/2 -translate-y-1/2 rounded-full border border-white/15 bg-surface p-2 text-slate-200 transition-all duration-200 hover:scale-110 hover:border-indigo-2 hover:bg-indigo-2/10 hover:text-white"
-          >
-            <ChevronLeft size={18} />
-          </button>
-
+        <div className="mt-12 grid min-h-[32rem] items-center gap-12 md:grid-cols-[minmax(20rem,0.85fr)_minmax(0,1.15fr)] lg:mt-16 lg:gap-28">
           <div
-            ref={scrollerRef}
-            className="no-scrollbar flex gap-6 overflow-x-auto scroll-smooth px-2 py-2"
+            className={`transition-all duration-700 ease-out ${
+              visible ? "translate-x-0 opacity-100" : "-translate-x-8 opacity-0"
+            }`}
           >
-            {skills.map((skill, i) => {
-              const Icon = icons[skill.id];
-              return (
-                <SpotlightCard
-                  key={skill.id}
-                  className={`group w-72 shrink-0 border-white/5 bg-surface transition-all duration-500 ease-out hover:-translate-y-2 hover:border-indigo-2/30 hover:shadow-[0_20px_50px_-20px_rgba(91,79,245,0.4)] ${
-                    visible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
-                  }`}
-                  spotlightColor="rgba(34, 211, 238, 0.2)"
-                  style={{ transitionDelay: visible ? `${i * 100}ms` : "0ms" }}
-                >
-                  <div
-                    className={`mb-6 flex h-12 w-12 items-center justify-center rounded-xl transition-transform duration-300 group-hover:scale-110 group-hover:rotate-6 ${skill.accent}`}
-                  >
-                    <Icon size={22} />
-                  </div>
-                  <h3 className="font-display text-xl font-semibold text-white transition-colors duration-200 group-hover:text-indigo-2">
-                    {skill.title}
-                  </h3>
-                  <p className="mt-3 text-sm leading-relaxed text-muted">
-                    {skill.description}
-                  </p>
-                </SpotlightCard>
-              );
-            })}
+            <p className="mb-5 px-3 font-mono text-sm font-semibold uppercase tracking-[0.25em] text-cyan-300/70">
+              Skills
+            </p>
+            <OptionWheel
+              items={skillOptions}
+              defaultSelected={2}
+              onChange={handleSkillChange}
+              textColor="#64748b"
+              activeColor="#ffffff"
+              side="left"
+              fontSize={3.1}
+              spacing={1.45}
+              curve={0.9}
+              tilt={6}
+              blur={1.5}
+              fade={0.2}
+              inset={12}
+            />
           </div>
 
-          <button
-            onClick={() => scroll(1)}
-            aria-label="Scroll right"
-            className="absolute right-0 top-1/2 z-10 -translate-y-1/2 translate-x-1/2 rounded-full border border-white/15 bg-surface p-2 text-slate-200 transition-all duration-200 hover:scale-110 hover:border-indigo-2 hover:bg-indigo-2/10 hover:text-white"
+          <SpotlightCard
+            className={`min-h-[22rem] border-white/5 bg-surface p-10 transition-all duration-700 ease-out lg:p-14 ${
+              visible ? "translate-x-0 opacity-100" : "translate-x-8 opacity-0"
+            }`}
+            spotlightColor="rgba(34, 211, 238, 0.2)"
           >
-            <ChevronRight size={18} />
-          </button>
+            <div className={`mb-9 flex h-20 w-20 items-center justify-center rounded-2xl ${selectedSkill.accent}`}>
+              <SelectedIcon size={36} />
+            </div>
+            <p className="font-mono text-sm font-semibold uppercase tracking-[0.25em] text-cyan-300/70">
+              Capability {selectedIndex + 1} / {skills.length}
+            </p>
+            <h3 className="mt-4 font-display text-4xl font-semibold text-white sm:text-5xl lg:text-6xl">
+              {selectedSkill.title}
+            </h3>
+            <p className="mt-7 max-w-2xl text-lg leading-relaxed text-muted sm:text-xl lg:text-2xl">
+              {selectedSkill.description}
+            </p>
+          </SpotlightCard>
         </div>
       </div>
     </section>

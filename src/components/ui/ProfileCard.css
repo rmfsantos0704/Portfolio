@@ -1,0 +1,171 @@
+.profile-card-wrapper {
+  --pointer-x: 50%;
+  --pointer-y: 50%;
+  --rotate-x: 0deg;
+  --rotate-y: 0deg;
+  position: relative;
+  width: min(100%, 23rem);
+  perspective: 900px;
+  isolation: isolate;
+}
+
+.profile-card-glow {
+  position: absolute;
+  inset: 10% -8% -8%;
+  z-index: -1;
+  border-radius: 50%;
+  background: radial-gradient(circle at var(--pointer-x) var(--pointer-y), rgba(34, 211, 238, .48), transparent 55%);
+  filter: blur(34px);
+  opacity: .35;
+  transition: opacity 220ms ease;
+}
+
+.profile-card-wrapper.is-active .profile-card-glow {
+  opacity: .8;
+}
+
+.profile-card-shell {
+  position: relative;
+  transform: rotateX(var(--rotate-x)) rotateY(var(--rotate-y));
+  transform-style: preserve-3d;
+  transition: transform 260ms ease-out;
+}
+
+.profile-card {
+  position: relative;
+  aspect-ratio: .72;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, .16);
+  border-radius: 1.5rem;
+  background: var(--inner-gradient), #0e1220;
+  box-shadow: 0 1.5rem 3rem rgba(0, 0, 0, .38), 0 0 0 1px rgba(255, 255, 255, .03) inset;
+  transform: translateZ(0);
+}
+
+.profile-card::before {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background: radial-gradient(circle at var(--pointer-x) var(--pointer-y), rgba(255, 255, 255, .24), transparent 28%), linear-gradient(135deg, rgba(255,255,255,.12), transparent 35%);
+  content: "";
+  mix-blend-mode: screen;
+  pointer-events: none;
+}
+
+.profile-card-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(to bottom, rgba(9, 12, 20, .04) 30%, rgba(9, 12, 20, .88) 82%, #090c14 100%);
+  pointer-events: none;
+}
+
+.profile-card-avatar {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  filter: saturate(.82) contrast(1.05);
+  transition: transform 500ms ease, filter 300ms ease;
+}
+
+.profile-card-wrapper.is-active .profile-card-avatar {
+  transform: scale(1.035);
+  filter: saturate(1) contrast(1.08);
+}
+
+.profile-card-details {
+  position: absolute;
+  z-index: 3;
+  top: 1.75rem;
+  left: 1.75rem;
+  right: 1.75rem;
+}
+
+.profile-card-title {
+  margin: 0 0 .5rem;
+  color: #67e8f9;
+  font-family: var(--font-mono, monospace);
+  font-size: .68rem;
+  font-weight: 700;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+}
+
+.profile-card-details h2 {
+  margin: 0;
+  color: #fff;
+  font-family: var(--font-display, sans-serif);
+  font-size: clamp(1.8rem, 5vw, 2.8rem);
+  line-height: .98;
+}
+
+.profile-card-info {
+  position: absolute;
+  z-index: 3;
+  right: 1.25rem;
+  bottom: 1.25rem;
+  left: 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: .75rem;
+  padding: .8rem;
+  border: 1px solid rgba(255, 255, 255, .14);
+  border-radius: .9rem;
+  background: rgba(9, 12, 20, .5);
+  backdrop-filter: blur(18px);
+}
+
+.profile-card-handle,
+.profile-card-status {
+  margin: 0;
+  font-size: .75rem;
+}
+
+.profile-card-handle {
+  color: #f8fafc;
+  font-weight: 700;
+}
+
+.profile-card-status {
+  display: flex;
+  align-items: center;
+  gap: .35rem;
+  margin-top: .35rem;
+  color: #a8b2c4;
+}
+
+.profile-card-status span {
+  width: .4rem;
+  height: .4rem;
+  border-radius: 999px;
+  background: #34d399;
+  box-shadow: 0 0 10px #34d399;
+}
+
+.profile-card-info button {
+  flex-shrink: 0;
+  padding: .65rem .8rem;
+  border: 1px solid rgba(103, 232, 249, .45);
+  border-radius: .65rem;
+  background: rgba(34, 211, 238, .1);
+  color: #e0f2fe;
+  cursor: pointer;
+  font-size: .7rem;
+  font-weight: 700;
+  transition: background 180ms ease, transform 180ms ease;
+}
+
+.profile-card-info button:hover {
+  background: rgba(34, 211, 238, .22);
+  transform: translateY(-2px);
+}
+
+@media (max-width: 640px) {
+  .profile-card-wrapper {
+    width: min(100%, 19rem);
+  }
+}
