@@ -9,14 +9,14 @@
 @theme {
   --font-display: "Fredoka", monospace;
   --font-mono: 'Fira Code', monospace;
-  --color-bg: #090c14;
-  --color-surface: #0e1220;
-  --color-surface-2: #10141f;
-  --color-border: #1e2536;
-  --color-muted: #8a93a6;
-  --color-indigo: #5b4ff5;
-  --color-indigo-2: #7c7eff;
-  --color-cyan: #22d3ee;
+  --color-bg: #0d0918;
+  --color-surface: #151025;
+  --color-surface-2: #1a1330;
+  --color-border: #302455;
+  --color-muted: #aaa0c4;
+  --color-indigo: #6366f1;
+  --color-indigo-2: #a78bfa;
+  --color-cyan: #c4b5fd;
 }
 
 html {
@@ -54,11 +54,11 @@ body {
   justify-content: center;
   padding: 2rem 1.5rem;
   text-align: center;
-  background: radial-gradient(circle at center, rgb(9 12 20 / 0.18), rgb(9 12 20 / 0.82) 72%);
+  background: radial-gradient(circle at center, rgb(13 9 24 / 0.18), rgb(13 9 24 / 0.86) 72%);
 }
 
 .entry-kicker {
-  color: #67e8f9;
+  color: #c4b5fd;
   font-family: var(--font-mono);
   font-size: 0.7rem;
   font-weight: 700;
@@ -102,7 +102,7 @@ body {
 }
 
 .entry-content button:hover {
-  border-color: #22d3ee;
+  border-color: #c4b5fd;
   background: rgb(91 79 245 / 0.42);
   transform: translateY(-2px);
 }

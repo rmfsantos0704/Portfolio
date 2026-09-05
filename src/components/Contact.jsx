@@ -2,7 +2,6 @@ import { useState } from "react";
 import emailjs from "@emailjs/browser";
 import { Mail } from "lucide-react";
 import { profile } from "../data/content";
-import SplitFlapText from "@/components/ui/SplitFlapText";
 import ProfileCard from "@/components/ui/ProfileCard";
 
 function GithubIcon(props) {
@@ -73,25 +72,15 @@ export default function Contact() {
   return (
     <section id="contact" className="min-h-[100dvh] border-t border-white/5 py-14">
       <div className="mx-auto grid min-h-[calc(100dvh-7rem)] max-w-7xl items-center gap-10 px-6 md:grid-cols-[minmax(0,1fr)_23rem] md:px-10 lg:gap-20">
-        {/* No card wrapper — content sits directly on the page */}
         <div className="w-full">
-          <div className="flex justify-center">
-            <SplitFlapText
-              words={["LETS BUILD", "GET IN TOUCH"]}
-              fontSize={30}
-              flipDuration={0.1}
-              stagger={0.05}
-              cycleDelay={2600}
-              tileColor="#1e1b4b"
-              textColor="#e0e7ff"
-              tileRadius={8}
-              gap={5}
-              className="font-display"
-            />
+          <div className="text-center">
+            <h2 className="font-display text-3xl font-bold tracking-tight text-white sm:text-4xl">
+              Get in Touch
+            </h2>
+            <p className="mt-4 text-base text-muted">
+              Have a project in mind?
+            </p>
           </div>
-          <p className="mt-4 text-center text-base text-muted">
-            Have a project in mind or just want to chat about NFC tech?
-          </p>
 
           <form id="contact-form" onSubmit={handleSubmit} className="mx-auto mt-12 w-full max-w-2xl space-y-6">
             <div className="grid gap-6 sm:grid-cols-2">

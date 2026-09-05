@@ -62,7 +62,7 @@ export default function Skills() {
               visible ? "translate-x-0 opacity-100" : "-translate-x-8 opacity-0"
             }`}
           >
-            <p className="mb-5 px-3 font-mono text-sm font-semibold uppercase tracking-[0.25em] text-cyan-300/70">
+            <p className="mb-5 px-3 font-mono text-sm font-semibold uppercase tracking-[0.25em] text-violet-300/70">
               Skills
             </p>
             <OptionWheel
@@ -86,12 +86,12 @@ export default function Skills() {
             className={`min-h-[22rem] border-white/5 bg-surface p-10 transition-all duration-700 ease-out lg:p-14 ${
               visible ? "translate-x-0 opacity-100" : "translate-x-8 opacity-0"
             }`}
-            spotlightColor="rgba(34, 211, 238, 0.2)"
+            spotlightColor="rgba(167, 139, 250, 0.24)"
           >
             <div className={`mb-9 flex h-20 w-20 items-center justify-center rounded-2xl ${selectedSkill.accent}`}>
               <SelectedIcon size={36} />
             </div>
-            <p className="font-mono text-sm font-semibold uppercase tracking-[0.25em] text-cyan-300/70">
+            <p className="font-mono text-sm font-semibold uppercase tracking-[0.25em] text-violet-300/70">
               Capability {selectedIndex + 1} / {skills.length}
             </p>
             <h3 className="mt-4 font-display text-4xl font-semibold text-white sm:text-5xl lg:text-6xl">

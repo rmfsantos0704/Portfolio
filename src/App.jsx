@@ -31,8 +31,8 @@ function App() {
           displaySocials={false}
           displayItemNumbering
           isFixed
-          colors={["#090c14", "#5b4ff5", "#22d3ee"]}
-          accentColor="#22d3ee"
+          colors={["#0d0918", "#6366f1", "#a78bfa"]}
+          accentColor="#c4b5fd"
           menuButtonColor="#f2f4f8"
           openMenuButtonColor="#f2f4f8"
           logoUrl=""

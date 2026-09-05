@@ -34,16 +34,16 @@ export default function About() {
     },
     {
       icon: Layers, // Changed from Cpu to Layers
-      iconBg: "bg-fuchsia-500/20",
-      iconColor: "text-fuchsia-300",
+      iconBg: "bg-violet-500/20",
+      iconColor: "text-violet-300",
       title: "Full-Stack Systems", // Changed from Hardware Integration
       description:
         "Developing robust backends and dynamic front-ends that work together to simplify complex tasks and workflows.",
     },
     {
       icon: Smartphone,
-      iconBg: "bg-emerald-500/20",
-      iconColor: "text-emerald-300",
+      iconBg: "bg-purple-500/20",
+      iconColor: "text-purple-300",
       title: "Mobile-First UIs",
       description:
         "Architecting mobile schedulers and utility apps designed specifically for native phone experiences.",

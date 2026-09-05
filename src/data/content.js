@@ -29,28 +29,28 @@ export const skills = [
     title: "MySQL",
     description:
       "Expert database schema design, optimization, and complex relational management.",
-    accent: "bg-emerald-500/20 text-emerald-300",
+    accent: "bg-violet-500/20 text-violet-300",
   },
   {
     id: "nfc",
     title: "NFC & Reverb",
     description:
       "Bridging web apps with Python and real-time communication.",
-    accent: "bg-fuchsia-500/20 text-fuchsia-300",
+    accent: "bg-purple-500/20 text-purple-300",
   },
   {
     id: "reactNative",
     title: "Expo & React Native",
     description:
       "Developed cross-platform mobile experiences with Expo and React Native, creating performant UI and native app behavior from a single codebase.",
-    accent: "bg-blue-500/20 text-blue-300",
+    accent: "bg-indigo-500/20 text-indigo-300",
   },
   {
     id: "mern",
     title: "MERN Stack",
     description:
       "Set up and scaled a full MERN ecosystem using MongoDB, Express, React, and Node.js to power robust web and mobile backend services.",
-    accent: "bg-teal-500/20 text-teal-300",
+    accent: "bg-violet-500/20 text-violet-300",
   },
 ];
 
@@ -58,8 +58,8 @@ export const projects = [
   {
     id: "bataeno-pass",
     label: "DIGITAL ID INTEGRATION",
-    labelColor: "text-cyan-300",
-    badgeColor: "bg-cyan-500/10 border-cyan-400/30",
+    labelColor: "text-violet-300",
+    badgeColor: "bg-violet-500/10 border-violet-400/30",
     title: "Bataeno Pass",
     deviceType: "desktop",
     description:
@@ -112,14 +112,14 @@ export const projects = [
   {
     id: "tatai",
     label: "QUALITY ASSURANCE \u2022 NLP ASSISTANT",
-    labelColor: "text-amber-300",
-    badgeColor: "bg-amber-500/10 border-amber-400/30",
+    labelColor: "text-indigo-300",
+    badgeColor: "bg-indigo-500/10 border-indigo-400/30",
     title: "TatAI",
     deviceType: "desktop",
     description:
       "An intelligent home assistant powered by Natural Language Processing (NLP) and a rule-based algorithm. I served as QA, testing the assistant's responses and behavior rather than writing its core code.",
     watermark: "QA",
-    gradient: "from-amber-900 via-orange-950 to-slate-950",
+    gradient: "from-indigo-950 via-violet-950 to-slate-950",
     challenge:
       "As an NLP-driven home assistant, TatAI needed to reliably interpret varied phrasing and edge-case commands without breaking or misfiring rule-based responses.",
     solution:
