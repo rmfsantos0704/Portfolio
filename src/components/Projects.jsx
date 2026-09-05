@@ -35,7 +35,7 @@ export default function Projects() {
         >
           <span
             aria-hidden="true"
-            className="absolute -left-[2px] top-0 text-cyan-400/70"
+            className="absolute -left-[2px] top-0 text-violet-400/70"
             style={{ clipPath: "inset(0 0 55% 0)" }}
           >
             Featured Work

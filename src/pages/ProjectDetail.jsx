@@ -98,7 +98,7 @@ export default function ProjectDetail() {
                     key={tech}
                     className="group flex items-center gap-2 text-sm text-slate-200 transition-transform duration-150 hover:translate-x-1"
                   >
-                    <Check size={14} className="text-emerald-400" />
+                    <Check size={14} className="text-violet-300" />
                     {tech}
                   </li>
                 ))}

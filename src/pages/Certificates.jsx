@@ -32,7 +32,7 @@ export default function Certificates() {
 
       <main className="mx-auto max-w-6xl px-6 pb-24 md:px-10">
         <span
-          className={`inline-block rounded-full border border-cyan-400/30 bg-cyan-500/10 px-3 py-1 text-xs font-bold tracking-wider text-cyan-300 transition-all duration-700 ease-out ${
+          className={`inline-block rounded-full border border-violet-400/30 bg-violet-500/10 px-3 py-1 text-xs font-bold tracking-wider text-violet-300 transition-all duration-700 ease-out ${
             visible ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0"
           }`}
         >
@@ -92,7 +92,7 @@ export default function Certificates() {
           <button
             type="button"
             aria-label="Close zoomed certificate"
-            className="absolute right-6 top-6 flex h-10 w-10 items-center justify-center rounded-full border border-white/15 text-slate-200 transition-all duration-200 hover:border-cyan-400 hover:bg-cyan-400/10 hover:text-white"
+            className="absolute right-6 top-6 flex h-10 w-10 items-center justify-center rounded-full border border-white/15 text-slate-200 transition-all duration-200 hover:border-violet-400 hover:bg-violet-400/10 hover:text-white"
             onClick={() => setZoomedCertificate(null)}
           >
             <X size={20} />

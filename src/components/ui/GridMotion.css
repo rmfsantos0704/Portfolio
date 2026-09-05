@@ -45,7 +45,7 @@
 .row__item-inner::after {
   position: absolute;
   inset: 0;
-  background: linear-gradient(135deg, rgb(34 211 238 / 0.14), transparent 55%, rgb(124 126 255 / 0.16));
+  background: linear-gradient(135deg, rgb(167 139 250 / 0.16), transparent 55%, rgb(99 102 241 / 0.2));
   content: "";
 }
 

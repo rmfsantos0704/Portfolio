@@ -181,7 +181,7 @@ export default function Contact() {
               rel="noreferrer"
               aria-label="GitHub"
               title="GitHub"
-              className="flex h-11 w-11 items-center justify-center rounded-full border border-white/15 text-slate-300 transition-all duration-200 hover:-translate-y-1 hover:border-cyan hover:text-white"
+              className="flex h-11 w-11 items-center justify-center rounded-full border border-white/15 text-slate-300 transition-all duration-200 hover:-translate-y-1 hover:border-violet-400 hover:text-white"
             >
               <GithubIcon className="h-5 w-5" aria-hidden="true" />
             </a>
@@ -191,7 +191,7 @@ export default function Contact() {
               rel="noreferrer"
               aria-label="LinkedIn"
               title="LinkedIn"
-              className="flex h-11 w-11 items-center justify-center rounded-full border border-white/15 text-slate-300 transition-all duration-200 hover:-translate-y-1 hover:border-cyan hover:text-white"
+              className="flex h-11 w-11 items-center justify-center rounded-full border border-white/15 text-slate-300 transition-all duration-200 hover:-translate-y-1 hover:border-violet-400 hover:text-white"
             >
               <LinkedinIcon className="h-5 w-5" aria-hidden="true" />
             </a>
@@ -199,7 +199,7 @@ export default function Contact() {
               href={`mailto:${profile.email}`}
               aria-label="Email"
               title="Email"
-              className="flex h-11 w-11 items-center justify-center rounded-full border border-white/15 text-slate-300 transition-all duration-200 hover:-translate-y-1 hover:border-cyan hover:text-white"
+              className="flex h-11 w-11 items-center justify-center rounded-full border border-white/15 text-slate-300 transition-all duration-200 hover:-translate-y-1 hover:border-violet-400 hover:text-white"
             >
               <Mail size={20} strokeWidth={1.8} aria-hidden="true" />
             </a>

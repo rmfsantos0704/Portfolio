@@ -14,7 +14,7 @@
   inset: 10% -8% -8%;
   z-index: -1;
   border-radius: 50%;
-  background: radial-gradient(circle at var(--pointer-x) var(--pointer-y), rgba(34, 211, 238, .48), transparent 55%);
+  background: radial-gradient(circle at var(--pointer-x) var(--pointer-y), rgba(167, 139, 250, .48), transparent 55%);
   filter: blur(34px);
   opacity: .35;
   transition: opacity 220ms ease;
@@ -86,7 +86,7 @@
 
 .profile-card-title {
   margin: 0 0 .5rem;
-  color: #67e8f9;
+  color: #c4b5fd;
   font-family: var(--font-mono, monospace);
   font-size: .68rem;
   font-weight: 700;
@@ -142,17 +142,17 @@
   width: .4rem;
   height: .4rem;
   border-radius: 999px;
-  background: #34d399;
-  box-shadow: 0 0 10px #34d399;
+  background: #a78bfa;
+  box-shadow: 0 0 10px #a78bfa;
 }
 
 .profile-card-info button {
   flex-shrink: 0;
   padding: .65rem .8rem;
-  border: 1px solid rgba(103, 232, 249, .45);
+  border: 1px solid rgba(196, 181, 253, .45);
   border-radius: .65rem;
-  background: rgba(34, 211, 238, .1);
-  color: #e0f2fe;
+  background: rgba(167, 139, 250, .1);
+  color: #ede9fe;
   cursor: pointer;
   font-size: .7rem;
   font-weight: 700;
@@ -160,7 +160,7 @@
 }
 
 .profile-card-info button:hover {
-  background: rgba(34, 211, 238, .22);
+  background: rgba(167, 139, 250, .22);
   transform: translateY(-2px);
 }
 

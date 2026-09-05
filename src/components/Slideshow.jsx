@@ -52,9 +52,9 @@ export default function Slideshow({ images, alt, deviceType = "desktop" }) {
     >
       {/* fake browser chrome */}
       <div className="flex items-center gap-2 border-b border-white/5 bg-surface px-4 py-3">
-        <span className="h-3 w-3 rounded-full bg-rose-500/80" />
-        <span className="h-3 w-3 rounded-full bg-amber-400/80" />
-        <span className="h-3 w-3 rounded-full bg-emerald-500/80" />
+        <span className="h-3 w-3 rounded-full bg-indigo-400/80" />
+        <span className="h-3 w-3 rounded-full bg-violet-400/80" />
+        <span className="h-3 w-3 rounded-full bg-purple-400/80" />
       </div>
 
       <div className="relative flex min-h-[420px] items-center justify-center bg-[#0b0e18] px-6 py-10 sm:min-h-[520px]">
@@ -96,7 +96,7 @@ export default function Slideshow({ images, alt, deviceType = "desktop" }) {
         </button>
 
         {/* counter */}
-        <span className="absolute right-4 top-4 rounded-full bg-black/50 px-3 py-1 text-xs font-semibold text-cyan-300 backdrop-blur">
+          <span className="absolute right-4 top-4 rounded-full bg-black/50 px-3 py-1 text-xs font-semibold text-violet-300 backdrop-blur">
           {index + 1} / {total}
         </span>
 

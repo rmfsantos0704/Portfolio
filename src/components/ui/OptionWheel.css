@@ -16,7 +16,7 @@
 
 .option-wheel:focus-visible {
   border-radius: 1rem;
-  outline: 2px solid #22d3ee;
+  outline: 2px solid #a78bfa;
   outline-offset: 6px;
 }
 
