@@ -30,6 +30,39 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
+.project-detail-page {
+  min-height: 100vh;
+  color: var(--project-page-text);
+  background-color: var(--project-page-background);
+  background-image: radial-gradient(circle at 85% 0%, color-mix(in srgb, var(--project-accent) 24%, transparent), transparent 34rem);
+}
+
+.project-detail-page h1,
+.project-detail-page h2,
+.project-detail-page h3,
+.project-detail-page h4,
+.project-detail-page li,
+.project-detail-page header a,
+.project-detail-page main a {
+  color: var(--project-page-text);
+}
+
+.project-detail-page .text-muted,
+.project-detail-page .text-slate-300,
+.project-detail-page .text-slate-400,
+.project-detail-page .text-slate-200 {
+  color: var(--project-page-muted);
+}
+
+.project-detail-panel {
+  background-color: var(--project-page-surface) !important;
+  border-color: color-mix(in srgb, var(--project-accent) 28%, transparent) !important;
+}
+
+.project-detail-page .project-slideshow {
+  background-color: var(--project-page-surface);
+}
+
 .entry-shell {
   min-height: 100vh;
   overflow: hidden;

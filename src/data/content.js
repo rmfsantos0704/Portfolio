@@ -62,6 +62,21 @@ export const projects = [
     badgeColor: "bg-violet-500/10 border-violet-400/30",
     title: "Bataeno Pass",
     deviceType: "desktop",
+    // Placeholder path — drop the actual Bataeño Pass logo file at this location in /public.
+    logo: "/logos/bataeno-pass.png",
+    theme: {
+      accent: "#2457f5",
+      secondary: "#12b8d4",
+      highlight: "#a4e900",
+      title: "#a4e900",
+      titleOnDark: "#a4e900",
+      surface: "#071b70",
+      backdrop: "#06113f",
+      pageBackground: "#050d2d",
+      pageSurface: "#0b1d5a",
+      pageText: "#f7fbff",
+      pageMuted: "#b8c9ee",
+    },
     description:
       "Bridging the gap between software and physical IDs. Implemented OAuth 2.0 and custom Python NFC reader bridges for local government efficiency.",
     watermark: "NFC",
@@ -89,6 +104,21 @@ export const projects = [
     badgeColor: "bg-purple-500/10 border-purple-400/30",
     title: "SnowEd",
     deviceType: "mobile",
+    // Placeholder path — drop the SnowEd app icon file at this location in /public.
+    logo: "/logos/snowed.png",
+theme: {
+      accent: "#3d91d8",
+      secondary: "#0b4e86",
+      highlight: "#98FCFC", // Warm amber/gold for contrast (or use #00b4d8 for bright cyan)
+      title: "#0b4e86",
+      titleOnDark: "#98FCFC",
+      surface: "#eaf4ff",
+      backdrop: "#d9eaff",
+      pageBackground: "#d9eaff",
+      pageSurface: "#f5faff",
+      pageText: "#0b4e86",
+      pageMuted: "#477da6",
+    },
     link: "https://snowed-landing.vercel.app/",
     description:
       "A mobile scheduler and note-taking app for students. It helps users track courses, deadlines, and completion status while keeping note-taking photo-first.",
@@ -116,6 +146,21 @@ export const projects = [
     badgeColor: "bg-indigo-500/10 border-indigo-400/30",
     title: "TatAI",
     deviceType: "desktop",
+    // Placeholder path — drop the TatAI icon file at this location in /public.
+    logo: "/logos/tatai.png",
+    theme: {
+      accent: "#0758df",
+      secondary: "#24c768",
+      highlight: "#f2f2ed",
+      title: "#0758df",
+      titleOnDark: "#f2f2ed",
+      surface: "#f4f4f1",
+      backdrop: "#e5e5df",
+      pageBackground: "#e5e5df",
+      pageSurface: "#f8f8f4",
+      pageText: "#17212b",
+      pageMuted: "#53616b",
+    },
     description:
       "An intelligent home assistant powered by Natural Language Processing (NLP) and a rule-based algorithm. I served as QA, testing the assistant's responses and behavior rather than writing its core code.",
     watermark: "QA",

@@ -12,30 +12,44 @@ export default function ProjectDetail() {
     window.scrollTo({ top: 0, left: 0, behavior: "instant" });
   }, [id]);
 
-  if (!project) return <Navigate to="/portfolio" replace />;
+  if (!project) return <Navigate to="/" replace />;
 
   const otherProjects = projects.filter((p) => p.id !== id);
 
   return (
-    <>
+    <div
+      className="project-detail-page"
+      style={{
+        "--project-accent": project.theme.accent,
+        "--project-secondary": project.theme.secondary,
+        "--project-page-background": project.theme.pageBackground,
+        "--project-page-surface": project.theme.pageSurface,
+        "--project-page-text": project.theme.pageText,
+        "--project-page-muted": project.theme.pageMuted,
+      }}
+    >
       <header className="mx-auto flex max-w-5xl items-center justify-between px-6 py-8 md:px-10">
         <Link
-          to="/portfolio"
+          to="/projects"
           className="group flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-slate-300 transition-colors hover:text-white"
         >
-          <span className="flex h-8 w-8 items-center justify-center rounded-full border border-white/15 transition-all duration-200 group-hover:-translate-x-1 group-hover:border-indigo-2 group-hover:bg-indigo-2/10">
+          <span
+            className="flex h-8 w-8 items-center justify-center rounded-full border border-white/15 transition-all duration-200 group-hover:-translate-x-1 group-hover:bg-white/10"
+            style={{ borderColor: `${project.theme.accent}88` }}
+          >
             <ArrowLeft size={14} />
           </span>
-          Back to Portfolio
+          Back to Projects
         </Link>
-        <Link to="/portfolio" className="font-display text-lg font-semibold text-white/70 transition-colors hover:text-white">
-          RS<span className="text-indigo-2">.</span>
+        <Link to="/projects" className="font-display text-lg font-semibold text-white/70 transition-colors hover:text-white">
+          RS<span style={{ color: project.theme.accent }}>.</span>
         </Link>
       </header>
 
       <main className="mx-auto max-w-5xl px-6 pb-24 md:px-10">
         <span
-          className={`inline-block rounded-full border px-3 py-1 text-xs font-bold tracking-wider ${project.badgeColor} ${project.labelColor}`}
+          className="inline-block rounded-full border px-3 py-1 text-xs font-bold tracking-wider"
+          style={{ color: project.theme.accent, borderColor: `${project.theme.accent}66`, backgroundColor: `${project.theme.accent}18` }}
         >
           {project.label}
         </span>
@@ -55,7 +69,8 @@ export default function ProjectDetail() {
               href="https://snowed-landing.vercel.app/"
               target="_blank"
               rel="noreferrer"
-              className="inline-flex items-center gap-2 rounded-full border border-indigo-500/50 bg-indigo-500/10 px-5 py-2.5 text-xs font-bold text-white backdrop-blur-sm transition-all duration-300 hover:bg-indigo-500/20 hover:shadow-[0_0_20px_-5px_rgba(91,79,245,0.4)]"
+              className="inline-flex items-center gap-2 rounded-full border px-5 py-2.5 text-xs font-bold text-white backdrop-blur-sm transition-all duration-300 hover:bg-white/10"
+              style={{ borderColor: `${project.theme.accent}88`, backgroundColor: `${project.theme.accent}1a` }}
             >
               <span>View Landing Page</span>
               <ExternalLink size={13} />
@@ -64,10 +79,11 @@ export default function ProjectDetail() {
         )}
 
         <div className="mt-14">
-          <Slideshow 
-            images={project.screenshots} 
-            alt={project.title} 
-            deviceType={project.deviceType || "desktop"} 
+          <Slideshow
+            images={project.screenshots}
+            alt={project.title}
+            deviceType={project.deviceType || "desktop"}
+            theme={project.theme}
           />
         </div>
 
@@ -75,19 +91,19 @@ export default function ProjectDetail() {
           <div className="space-y-10">
             <div>
               <h2 className="font-display text-2xl font-semibold text-white">
-                <span className="text-indigo-2">01.</span> The Challenge
+                <span style={{ color: project.theme.accent }}>01.</span> The Challenge
               </h2>
               <p className="mt-3 leading-relaxed text-muted">{project.challenge}</p>
             </div>
             <div>
               <h2 className="font-display text-2xl font-semibold text-white">
-                <span className="text-indigo-2">02.</span> The Solution
+                <span style={{ color: project.theme.accent }}>02.</span> The Solution
               </h2>
               <p className="mt-3 leading-relaxed text-muted">{project.solution}</p>
             </div>
           </div>
 
-          <aside className="h-fit rounded-2xl border border-white/10 bg-surface p-6 space-y-6">
+          <aside className="project-detail-panel h-fit rounded-2xl border border-white/10 bg-surface p-6 space-y-6">
             <div>
               <h3 className="text-xs font-bold uppercase tracking-wider text-slate-400">
                 Tech Stack
@@ -98,7 +114,7 @@ export default function ProjectDetail() {
                     key={tech}
                     className="group flex items-center gap-2 text-sm text-slate-200 transition-transform duration-150 hover:translate-x-1"
                   >
-                    <Check size={14} className="text-violet-300" />
+                    <Check size={14} style={{ color: project.theme.secondary }} />
                     {tech}
                   </li>
                 ))}
@@ -111,7 +127,8 @@ export default function ProjectDetail() {
                   href="https://snowed-landing.vercel.app/"
                   target="_blank"
                   rel="noreferrer"
-                  className="flex w-full items-center justify-center gap-2 rounded-xl bg-indigo-600 px-4 py-3 text-xs font-bold text-white transition-colors hover:bg-indigo-500 shadow-lg shadow-indigo-600/20"
+                  className="flex w-full items-center justify-center gap-2 rounded-xl px-4 py-3 text-xs font-bold text-white transition-colors hover:brightness-110 shadow-lg"
+                  style={{ backgroundColor: project.theme.accent, boxShadow: `0 10px 25px -12px ${project.theme.accent}` }}
                 >
                   <span>Visit SnowEd Landing</span>
                   <ExternalLink size={14} />
@@ -131,12 +148,15 @@ export default function ProjectDetail() {
                 <Link
                   key={p.id}
                   to={`/projects/${p.id}`}
-                  className="group rounded-2xl border border-white/5 bg-surface p-6 transition-all duration-200 hover:-translate-y-1 hover:border-indigo-2/40"
+                  className="project-detail-panel group rounded-2xl border border-white/5 bg-surface p-6 transition-all duration-200 hover:-translate-y-1 hover:border-indigo-2/40"
                 >
-                  <span className={`text-xs font-bold tracking-wider ${p.labelColor}`}>
+                  <span className="text-xs font-bold tracking-wider" style={{ color: p.theme.accent }}>
                     {p.label}
                   </span>
-                  <h4 className="mt-2 font-display text-xl font-semibold text-white transition-colors group-hover:text-indigo-2">
+                  <h4
+                    className="mt-2 font-display text-xl font-semibold transition-colors"
+                    style={{ color: project.id === "bataeno-pass" ? p.theme.titleOnDark : p.theme.title }}
+                  >
                     {p.title}
                   </h4>
                 </Link>
@@ -145,6 +165,6 @@ export default function ProjectDetail() {
           </div>
         )}
       </main>
-    </>
+    </div>
   );
 }
