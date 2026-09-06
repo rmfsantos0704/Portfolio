@@ -2,7 +2,7 @@ import { useState } from "react";
 import emailjs from "@emailjs/browser";
 import { Mail } from "lucide-react";
 import { profile } from "../data/content";
-import ReflectiveCard from "@/components/ui/ReflectiveCard";
+import ReflectiveCard from "@/components/ui/Reflectivecard";
 
 function GithubIcon(props) {
   return (
