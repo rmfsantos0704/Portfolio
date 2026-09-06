@@ -2,7 +2,7 @@ import { useState } from "react";
 import emailjs from "@emailjs/browser";
 import { Mail } from "lucide-react";
 import { profile } from "../data/content";
-import ProfileCard from "@/components/ui/ProfileCard";
+import ReflectiveCard from "@/components/ui/ReflectiveCard";
 
 function GithubIcon(props) {
   return (
@@ -30,11 +30,6 @@ export default function Contact() {
 
   const handleChange = (e) => {
     setForm((f) => ({ ...f, [e.target.name]: e.target.value }));
-  };
-
-  const handleProfileContact = () => {
-    document.getElementById("contact-form")?.scrollIntoView({ behavior: "smooth", block: "center" });
-    window.setTimeout(() => document.getElementById("name")?.focus(), 450);
   };
 
   const handleSubmit = async (e) => {
@@ -141,14 +136,6 @@ export default function Contact() {
               />
             </div>
 
-            <button
-              type="submit"
-              disabled={status === "sending"}
-              className="w-full rounded-lg bg-indigo px-6 py-4 text-base font-bold text-white shadow-lg shadow-indigo/40 transition-transform hover:-translate-y-0.5 disabled:cursor-not-allowed disabled:opacity-60"
-            >
-              {status === "sending" ? "Sending..." : "Send Message"}
-            </button>
-
             {status === "sent" && (
               <p className="text-center text-sm text-emerald-400">
                 Message sent. I&apos;ll get back to you soon.
@@ -160,50 +147,59 @@ export default function Contact() {
                 {profile.email}.
               </p>
             )}
+
+            <div className="flex items-center justify-center gap-3 pt-2" aria-label="Social links">
+              <a
+                href={profile.github}
+                target="_blank"
+                rel="noreferrer"
+                aria-label="GitHub"
+                title="GitHub"
+                className="flex h-11 w-11 items-center justify-center rounded-full border border-white/15 text-slate-300 transition-all duration-200 hover:-translate-y-1 hover:border-violet-400 hover:text-white"
+              >
+                <GithubIcon className="h-5 w-5" aria-hidden="true" />
+              </a>
+              <a
+                href={profile.linkedin}
+                target="_blank"
+                rel="noreferrer"
+                aria-label="LinkedIn"
+                title="LinkedIn"
+                className="flex h-11 w-11 items-center justify-center rounded-full border border-white/15 text-slate-300 transition-all duration-200 hover:-translate-y-1 hover:border-violet-400 hover:text-white"
+              >
+                <LinkedinIcon className="h-5 w-5" aria-hidden="true" />
+              </a>
+              <a
+                href={`mailto:${profile.email}`}
+                aria-label="Email"
+                title="Email"
+                className="flex h-11 w-11 items-center justify-center rounded-full border border-white/15 text-slate-300 transition-all duration-200 hover:-translate-y-1 hover:border-violet-400 hover:text-white"
+              >
+                <Mail size={20} strokeWidth={1.8} aria-hidden="true" />
+              </a>
+            </div>
           </form>
 
         </div>
 
         <div className="flex flex-col items-center md:sticky md:top-24">
-          <ProfileCard
-            name={`${profile.firstName} ${profile.lastName}`}
-            title="Full-Stack Developer"
-            handle="rmfsantos0704"
-            status="Available for work"
-            avatarUrl="/russel-profile.jpg"
-            onContactClick={handleProfileContact}
+          <ReflectiveCard
+            name={form.name.trim() ? form.name.toUpperCase() : "YOUR NAME"}
+            title={form.email.trim() || "your@email.com"}
+            idNumber="RS-0704-DEV"
+            idLabel="DEVELOPER ID"
+            badgeLabel="AVAILABLE FOR WORK"
+            grayscale={0}
           />
 
-          <div className="mt-6 flex items-center gap-3" aria-label="Social links">
-            <a
-              href={profile.github}
-              target="_blank"
-              rel="noreferrer"
-              aria-label="GitHub"
-              title="GitHub"
-              className="flex h-11 w-11 items-center justify-center rounded-full border border-white/15 text-slate-300 transition-all duration-200 hover:-translate-y-1 hover:border-violet-400 hover:text-white"
-            >
-              <GithubIcon className="h-5 w-5" aria-hidden="true" />
-            </a>
-            <a
-              href={profile.linkedin}
-              target="_blank"
-              rel="noreferrer"
-              aria-label="LinkedIn"
-              title="LinkedIn"
-              className="flex h-11 w-11 items-center justify-center rounded-full border border-white/15 text-slate-300 transition-all duration-200 hover:-translate-y-1 hover:border-violet-400 hover:text-white"
-            >
-              <LinkedinIcon className="h-5 w-5" aria-hidden="true" />
-            </a>
-            <a
-              href={`mailto:${profile.email}`}
-              aria-label="Email"
-              title="Email"
-              className="flex h-11 w-11 items-center justify-center rounded-full border border-white/15 text-slate-300 transition-all duration-200 hover:-translate-y-1 hover:border-violet-400 hover:text-white"
-            >
-              <Mail size={20} strokeWidth={1.8} aria-hidden="true" />
-            </a>
-          </div>
+          <button
+            type="submit"
+            form="contact-form"
+            disabled={status === "sending"}
+            className="mt-6 w-full max-w-[23rem] rounded-lg bg-indigo px-6 py-4 text-base font-bold text-white shadow-lg shadow-indigo/40 transition-transform hover:-translate-y-0.5 disabled:cursor-not-allowed disabled:opacity-60"
+          >
+            {status === "sending" ? "Sending..." : "Send Message"}
+          </button>
         </div>
       </div>
     </section>

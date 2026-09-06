@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import { ArrowLeft, X } from "lucide-react";
+import { X } from "lucide-react";
 import { certificates } from "../data/content";
 import DepthCarousel from "../components/ui/DepthCarousel";
 
@@ -9,9 +8,6 @@ export default function Certificates() {
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
-    window.scrollTo({ top: 0, left: 0, behavior: "instant" });
-    // Trigger the entrance animation on the next frame so the initial
-    // opacity-0/translate state actually paints before transitioning.
     const raf = requestAnimationFrame(() => setVisible(true));
     return () => cancelAnimationFrame(raf);
   }, []);
@@ -27,10 +23,8 @@ export default function Certificates() {
 
   return (
     <>
-      <header className="mx-auto flex max-w-5xl items-center justify-between px-6 py-8 md:px-10">
-      </header>
-
-      <main className="mx-auto max-w-6xl px-6 pb-24 md:px-10">
+      <section id="certificates" className="border-t border-white/5 py-24">
+        <div className="mx-auto max-w-6xl px-6 md:px-10">
         <span
           className={`inline-block rounded-full border border-violet-400/30 bg-violet-500/10 px-3 py-1 text-xs font-bold tracking-wider text-violet-300 transition-all duration-700 ease-out ${
             visible ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0"
@@ -79,7 +73,8 @@ export default function Certificates() {
           />
         </div>
 
-      </main>
+        </div>
+      </section>
 
       {zoomedCertificate && (
         <div

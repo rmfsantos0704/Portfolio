@@ -40,15 +40,15 @@ export default function Hero() {
   return (
     <section
       id="top"
-      // h-[100dvh] + overflow-hidden: locks the section to exactly one viewport tall in
-      // Chrome (dvh accounts for the mobile/desktop UI chrome), no scroll, content scaled to fit.
-      className="relative mx-auto flex h-[100dvh] w-full max-w-[90rem] flex-col items-start justify-center overflow-hidden px-8 py-24 font-mono sm:px-12 lg:px-20"
+      // Changed `items-start` to `items-center` here
+      className="relative mx-auto flex h-[100dvh] w-full max-w-[90rem] flex-col items-center justify-center overflow-hidden px-8 py-24 font-mono sm:px-12 lg:px-20"
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
     >
       <canvas ref={canvasRef} className="pointer-events-none fixed inset-0 z-0 h-full w-full opacity-90" />
 
-      <div className="relative z-10 flex max-h-full w-full max-w-4xl flex-col items-start justify-center text-left">
+      {/* Changed `items-start` to `items-center` and `text-left` to `text-center` here */}
+      <div className="relative z-10 flex max-h-full w-full max-w-4xl flex-col items-center justify-center text-center">
         {/* Logo */}
         <div
           className="group relative h-32 w-32 shrink-0 cursor-pointer sm:h-44 sm:w-44 md:h-52 md:w-52 lg:h-60 lg:w-60"
@@ -93,7 +93,7 @@ export default function Hero() {
             fontSize="clamp(2.75rem, 8vw, 5.5rem)"
             fontWeight={700}
             letterSpacing="-0.03em"
-            textAlign="left"
+            textAlign="center" /* Changed from "left" to "center" */
           />
         </div>
 
@@ -107,10 +107,10 @@ export default function Hero() {
           {profile.tagline}
         </p>
 
-        {/* Buttons */}
-        <div className="mt-8 flex flex-wrap items-center justify-start gap-5">
+        {/* Buttons - Changed `justify-start` to `justify-center` here */}
+        <div className="mt-8 flex flex-wrap items-center justify-center gap-5">
           <Link
-            to="/projects"
+            to="/portfolio#projects"
             className="group relative overflow-hidden rounded-full border border-indigo-500/50 bg-indigo-500/10 px-7 py-3.5 text-sm font-bold text-white backdrop-blur-sm transition-all duration-300 hover:bg-indigo-500/20 hover:shadow-[0_0_30px_-5px_rgba(91,79,245,0.4)] sm:text-base"
           >
             Explore Work
@@ -125,7 +125,7 @@ export default function Hero() {
             GitHub
           </a>
           <Link
-            to="/contact"
+            to="/portfolio#contact"
             className="rounded-full border border-indigo-200/40 px-6 py-3 text-sm font-semibold uppercase tracking-wider text-slate-300 transition-all duration-300 hover:border-indigo-400 hover:text-white sm:text-base"
           >
             Hire Me

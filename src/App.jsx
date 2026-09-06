@@ -1,52 +1,41 @@
-import { Routes, Route, useLocation } from "react-router-dom";
-import StaggeredMenu from "./components/ui/StaggeredMenu";
+import { Navigate, Routes, Route, useLocation } from "react-router-dom";
+import BubbleMenu from "./components/ui/BubbleMenu";
+import Entry from "./pages/Entry";
 import Home from "./pages/Home";
 import ProjectDetail from "./pages/ProjectDetail";
-import Certificates from "./pages/Certificates";
-import Entry from "./pages/Entry";
-import AboutPage from "./pages/AboutPage";
-import SkillsPage from "./pages/SkillsPage";
-import ProjectsPage from "./pages/ProjectsPage";
-import ContactPage from "./pages/ContactPage";
 
 function App() {
   const location = useLocation();
   const isEntry = location.pathname === "/";
-  const isOpeningPortfolio = location.pathname === "/portfolio" && location.state?.fromEntry;
   const menuItems = [
-    { label: "Home", link: "/portfolio" },
-    { label: "About", link: "/about" },
-    { label: "Skills", link: "/skills" },
-    { label: "Projects", link: "/projects" },
-    { label: "Certificates", link: "/certificates" },
-    { label: "Contact", link: "/contact" },
+    { label: "Home", link: "/portfolio#top" },
+    { label: "About", link: "/portfolio#about" },
+    { label: "Skills", link: "/portfolio#skills" },
+    { label: "Projects", link: "/portfolio#projects" },
+    { label: "Certificates", link: "/portfolio#certificates" },
+    { label: "Contact", link: "/portfolio#contact" },
   ];
 
   return (
-    <div className={`${isEntry ? "entry-shell" : "min-h-screen bg-bg"} ${isOpeningPortfolio ? "portfolio-opening" : ""}`}>
-      {!isEntry && (
-        <StaggeredMenu
-          position="right"
-          items={menuItems}
-          displaySocials={false}
-          displayItemNumbering
-          isFixed
-          colors={["#0d0918", "#6366f1", "#a78bfa"]}
-          accentColor="#c4b5fd"
-          menuButtonColor="#f2f4f8"
-          openMenuButtonColor="#f2f4f8"
-          logoUrl=""
+    <div className={isEntry ? "entry-shell" : "min-h-screen bg-bg"}>
+      {!isEntry && location.pathname !== "/projects" && !location.pathname.startsWith("/projects/") && (
+        <BubbleMenu
+          logo={<span>RS<span aria-hidden="true">.</span></span>}
+          items={menuItems.map((item) => ({ label: item.label, href: item.link }))}
+          menuAriaLabel="Toggle portfolio navigation"
+          menuBg="#ffffff"
+          menuContentColor="#4f46e5"
         />
       )}
       <Routes>
         <Route path="/" element={<Entry />} />
         <Route path="/portfolio" element={<Home />} />
-        <Route path="/about" element={<AboutPage />} />
-        <Route path="/skills" element={<SkillsPage />} />
-        <Route path="/projects" element={<ProjectsPage />} />
+        <Route path="/about" element={<Navigate to="/portfolio#about" replace />} />
+        <Route path="/skills" element={<Navigate to="/portfolio#skills" replace />} />
+        <Route path="/projects" element={<Navigate to="/portfolio#projects" replace />} />
+        <Route path="/certificates" element={<Navigate to="/portfolio#certificates" replace />} />
+        <Route path="/contact" element={<Navigate to="/portfolio#contact" replace />} />
         <Route path="/projects/:id" element={<ProjectDetail />} />
-        <Route path="/contact" element={<ContactPage />} />
-        <Route path="/certificates" element={<Certificates />} />
       </Routes>
     </div>
   );

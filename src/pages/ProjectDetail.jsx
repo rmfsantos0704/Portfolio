@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Link, useParams, Navigate } from "react-router-dom";
 import { ArrowLeft, Check, ExternalLink } from "lucide-react";
 import { projects } from "../data/content";
@@ -7,9 +7,17 @@ import Slideshow from "../components/Slideshow";
 export default function ProjectDetail() {
   const { id } = useParams();
   const project = projects.find((p) => p.id === id);
+  
+  // 1. Add state to track if the page is ready to animate
+  const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
     window.scrollTo({ top: 0, left: 0, behavior: "instant" });
+    
+    // 2. Reset visibility to false on route change, then trigger animation after a tiny delay
+    setIsVisible(false);
+    const timer = setTimeout(() => setIsVisible(true), 50);
+    return () => clearTimeout(timer);
   }, [id]);
 
   if (!project) return <Navigate to="/" replace />;
@@ -18,7 +26,7 @@ export default function ProjectDetail() {
 
   return (
     <div
-      className="project-detail-page"
+      className="project-detail-page overflow-x-hidden"
       style={{
         "--project-accent": project.theme.accent,
         "--project-secondary": project.theme.secondary,
@@ -28,9 +36,14 @@ export default function ProjectDetail() {
         "--project-page-muted": project.theme.pageMuted,
       }}
     >
-      <header className="mx-auto flex max-w-5xl items-center justify-between px-6 py-8 md:px-10">
+      {/* 3. Add Tailwind transition classes to the header (slides down) */}
+      <header 
+        className={`mx-auto flex max-w-5xl items-center justify-between px-6 py-8 md:px-10 transition-all duration-700 ease-out ${
+          isVisible ? "translate-y-0 opacity-100" : "-translate-y-4 opacity-0"
+        }`}
+      >
         <Link
-          to="/projects"
+          to="/portfolio#projects"
           className="group flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-slate-300 transition-colors hover:text-white"
         >
           <span
@@ -39,14 +52,19 @@ export default function ProjectDetail() {
           >
             <ArrowLeft size={14} />
           </span>
-          Back to Projects
+          Back to Portfolio
         </Link>
-        <Link to="/projects" className="font-display text-lg font-semibold text-white/70 transition-colors hover:text-white">
+        <Link to="/portfolio#projects" className="font-display text-lg font-semibold text-white/70 transition-colors hover:text-white">
           RS<span style={{ color: project.theme.accent }}>.</span>
         </Link>
       </header>
 
-      <main className="mx-auto max-w-5xl px-6 pb-24 md:px-10">
+      {/* 4. Add Tailwind transition classes to the main content (slides up with a delay) */}
+      <main 
+        className={`mx-auto max-w-5xl px-6 pb-24 md:px-10 transition-all duration-700 delay-150 ease-out ${
+          isVisible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
+        }`}
+      >
         <span
           className="inline-block rounded-full border px-3 py-1 text-xs font-bold tracking-wider"
           style={{ color: project.theme.accent, borderColor: `${project.theme.accent}66`, backgroundColor: `${project.theme.accent}18` }}
@@ -62,7 +80,6 @@ export default function ProjectDetail() {
           {project.description}
         </p>
 
-        {/* Landing Page Button Moved Directly Below Description */}
         {project.id === "snowed" && (
           <div className="mt-6">
             <a
