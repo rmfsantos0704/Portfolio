@@ -4,6 +4,7 @@ import Entry from "./pages/Entry";
 import Home from "./pages/Home";
 import ProjectDetail from "./pages/ProjectDetail";
 import Certificates from "./pages/Certificates";
+import Contact from "./pages/Contact";
 
 function App() {
   const location = useLocation();
@@ -14,7 +15,7 @@ function App() {
     { label: "Skills", link: "/portfolio#skills" },
     { label: "Projects", link: "/portfolio#projects" },
     { label: "Certificates", link: "/certificates" },
-    { label: "Contact", link: "/portfolio#contact" },
+    { label: "Contact", link: "/contact" },
   ];
 
   return (
@@ -35,7 +36,7 @@ function App() {
         <Route path="/skills" element={<Navigate to="/portfolio#skills" replace />} />
         <Route path="/projects" element={<Navigate to="/portfolio#projects" replace />} />
         <Route path="/certificates" element={<Certificates />} />
-        <Route path="/contact" element={<Navigate to="/portfolio#contact" replace />} />
+        <Route path="/contact" element={<Contact />} />
         <Route path="/projects/:id" element={<ProjectDetail />} />
       </Routes>
     </div>
