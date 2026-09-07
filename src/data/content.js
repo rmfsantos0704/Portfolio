@@ -185,17 +185,69 @@ theme: {
 
 // Screenshots of your certificates, served from public/Certificates.
 // Add or remove entries here — the Certificates section renders whatever is in this array.
+// Screenshots of your certificates, served from public/Certificates.
+// Add or remove entries here — the Certificates section renders whatever is in this array.
 export const certificates = [
-  { file: "Screenshot 2026-09-04 130223.png", title: "Certificate" },
-  { file: "Screenshot 2026-09-04 130228.png", title: "Certificate" },
-  { file: "Screenshot 2026-09-04 130232.png", title: "Certificate" },
-  { file: "Screenshot 2026-09-04 130238.png", title: "Certificate" },
-  { file: "Screenshot 2026-09-04 130306.png", title: "Certificate" },
-  { file: "Screenshot 2026-09-04 130314.png", title: "Certificate" },
-  { file: "Screenshot 2026-09-04 130322.png", title: "Certificate" },
-  { file: "Screenshot 2026-09-04 130451.png", title: "Certificate" },
-  { file: "Screenshot 2026-09-04 130507.png", title: "Certificate" },
-  { file: "Screenshot 2026-09-04 130515.png", title: "Certificate" },
+  { 
+    file: "Screenshot 2026-09-04 130223.png", 
+    title: "PowerPoint Associate", 
+    issuer: "Microsoft", 
+    dateIssued: "October 18, 2025" 
+  },
+  { 
+    file: "Screenshot 2026-09-04 130228.png", 
+    title: "Microsoft Office Specialist", 
+    issuer: "Microsoft", 
+    dateIssued: "November 6, 2025" 
+  },
+  { 
+    file: "Screenshot 2026-09-04 130232.png", 
+    title: "Excel Associate", 
+    issuer: "Microsoft", 
+    dateIssued: "November 6, 2025" 
+  },
+  { 
+    file: "Screenshot 2026-09-04 130238.png", 
+    title: "Word Associate", 
+    issuer: "Microsoft", 
+    dateIssued: "September 20, 2025" 
+  },
+  { 
+    file: "Screenshot 2026-09-04 130306.png", 
+    title: "IC3 GS6 LEVEL 1", 
+    issuer: "Certiport", 
+    dateIssued: "May 27, 2024" 
+  },
+  { 
+    file: "Screenshot 2026-09-04 130314.png", 
+    title: "HTML5 Application Development", 
+    issuer: "Certiport", 
+    dateIssued: "April 16, 2026" 
+  },
+  { 
+    file: "Screenshot 2026-09-04 130322.png", 
+    title: "JavaScript", 
+    issuer: "Certiport", 
+    dateIssued: "April 16, 2026" 
+  },
+  { 
+    file: "Screenshot 2026-09-04 130451.png", 
+    title: "Cybersecurity", 
+    issuer: "Certiport", 
+    dateIssued: "May 3, 2025" 
+  },
+  { 
+    file: "Screenshot 2026-09-04 130507.png", 
+    title: "HTML and CSS", 
+    issuer: "Certiport", 
+    dateIssued: "December 14, 2024" 
+  },
+  { 
+    file: "Screenshot 2026-09-04 130515.png", 
+    title: "Software Development", 
+    issuer: "Certiport", 
+    dateIssued: "December 7, 2024" 
+  },
 ].map((c) => ({ ...c, src: `/Certificates/${c.file}` }));
 
 export const navLinks = [

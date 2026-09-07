@@ -7,6 +7,7 @@ const DEFAULT_ITEMS = Array.from({ length: 15 }, (_, i) => {
   return {
     image: `https://picsum.photos/id/${ids[i % ids.length]}/600/400`,
     title: `Tile ${i + 1}`,
+    subtitle: 'Placeholder Subtitle',
     href: undefined
   };
 });
@@ -228,10 +229,19 @@ const DriftWall = ({
   );
 
   const renderTile = (item, id, colIndex) => {
+    const titleText = item.title || 'Certificate Title Placeholder';
+    const subtitleText = item.subtitle || 'Issuer / Date Placeholder';
+
     const inner = (
       <span className="drift-wall__inner">
-        <img src={item.image} alt={item.title ?? ''} loading="lazy" decoding="async" draggable={false} />
+        <img src={item.image} alt={titleText} loading="lazy" decoding="async" draggable={false} />
         <span className="drift-wall__overlay" aria-hidden="true" />
+
+        {/* Hover Label */}
+        <span className="drift-wall__label-container">
+          <span className="drift-wall__label-title">{titleText}</span>
+          <span className="drift-wall__label-subtitle">{subtitleText}</span>
+        </span>
       </span>
     );
 
@@ -263,7 +273,7 @@ const DriftWall = ({
       );
     }
     return (
-      <div key={id} tabIndex={0} role="button" aria-label={item.title ?? 'tile'} {...commonProps}>
+      <div key={id} tabIndex={0} role="button" aria-label={titleText} {...commonProps}>
         {inner}
       </div>
     );

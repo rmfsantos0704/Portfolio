@@ -74,25 +74,27 @@ export default function Certificates() {
         </div>
 
         {/* 100% Canvas Drift Wall */}
-        <div className="h-full w-full">
-          <DriftWall
-            items={certificates.map((cert, index) => ({
-              image: cert.src,
-              title: cert.title,
-              index,
-            }))}
-            columns={5}
-            tileWidth={280}
-            tileHeight={190}
-            gap={22}
-            tilt={14}
-            turn={-12}
-            speed={38}
-            lift={70}
-            overlayColor="#060010"
-            onTileClick={(item) => setActiveCertificateIndex(item.index)}
-          />
-        </div>
+<div className="h-full w-full">
+  <DriftWall
+    items={certificates.map((cert, index) => ({
+      image: cert.src,
+      title: cert.title,
+      // Combine the issuer and date into a single string
+      subtitle: `${cert.issuer} - ${cert.dateIssued}`, 
+      index,
+    }))}
+    columns={5}
+    tileWidth={280}
+    tileHeight={190}
+    gap={22}
+    tilt={14}
+    turn={-12}
+    speed={38}
+    lift={70}
+    overlayColor="#060010"
+    onTileClick={(item) => setActiveCertificateIndex(item.index)}
+  />
+</div>
       </section>
 
       {/* Zoom / Lightbox Modal */}
