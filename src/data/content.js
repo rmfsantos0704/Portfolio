@@ -52,6 +52,42 @@ export const skills = [
       "Set up and scaled a full MERN ecosystem using MongoDB, Express, React, and Node.js to power robust web and mobile backend services.",
     accent: "bg-violet-500/20 text-violet-300",
   },
+  {
+    id: "htmlCss",
+    title: "HTML & CSS",
+    description: "Certified in building responsive, accessible, and structured web interfaces using semantic HTML5 and modern CSS techniques.",
+    accent: "bg-orange-500/10 text-orange-400",
+  },
+  {
+    id: "javascript",
+    title: "JavaScript",
+    description: "Certified in developing dynamic, interactive web applications and scripts to manage DOM manipulation and state.",
+    accent: "bg-yellow-500/10 text-yellow-400",
+  },
+  {
+    id: "cybersecurity",
+    title: "Cybersecurity",
+    description: "Trained in fundamental security principles, threat mitigation, safe computing practices, and digital protection.",
+    accent: "bg-blue-500/10 text-blue-400",
+  },
+  {
+    id: "excel",
+    title: "Microsoft Excel",
+    description: "Microsoft Associate certified in data analysis, spreadsheet modeling, and advanced formula creation.",
+    accent: "bg-green-600/10 text-green-500",
+  },
+  {
+    id: "word",
+    title: "Microsoft Word",
+    description: "Microsoft Associate certified in advanced document formatting, styling, and professional documentation.",
+    accent: "bg-blue-600/10 text-blue-500",
+  },
+  {
+    id: "powerpoint",
+    title: "Microsoft PowerPoint",
+    description: "Microsoft Associate certified in designing compelling presentations with engaging visual elements and animations.",
+    accent: "bg-orange-600/10 text-orange-500",
+  },
 ];
 
 export const projects = [

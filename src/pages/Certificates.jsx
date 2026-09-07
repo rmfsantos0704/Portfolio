@@ -1,5 +1,5 @@
 import { useEffect, useState, useCallback } from "react";
-import { X, ChevronLeft, ChevronRight } from "lucide-react";
+import { X, ChevronLeft, ChevronRight, ArrowLeft } from "lucide-react";
 import { certificates } from "../data/content";
 import DriftWall from "../components/ui/DriftWall";
 
@@ -44,6 +44,18 @@ export default function Certificates() {
   return (
     <>
       <section id="certificates" className="relative h-screen w-screen overflow-hidden bg-[#060010]">
+        
+        {/* Back to Portfolio Button */}
+        <a
+          href="/portfolio"
+          className={`absolute left-4 top-4 z-50 flex items-center gap-2 rounded-full border border-white/20 bg-black/50 px-4 py-2 text-sm font-medium text-slate-200 backdrop-blur-md transition-all duration-700 hover:border-violet-400 hover:bg-violet-400/20 hover:text-white sm:left-6 sm:top-6 ${
+            visible ? "translate-x-0 opacity-100" : "-translate-x-4 opacity-0"
+          }`}
+        >
+          <ArrowLeft size={16} />
+          Back to Portfolio
+        </a>
+
         {/* Floating Header */}
         <div className="pointer-events-none absolute left-0 right-0 top-10 z-10 mx-auto max-w-4xl px-6 text-center">
           <span
@@ -74,27 +86,27 @@ export default function Certificates() {
         </div>
 
         {/* 100% Canvas Drift Wall */}
-<div className="h-full w-full">
-  <DriftWall
-    items={certificates.map((cert, index) => ({
-      image: cert.src,
-      title: cert.title,
-      // Combine the issuer and date into a single string
-      subtitle: `${cert.issuer} - ${cert.dateIssued}`, 
-      index,
-    }))}
-    columns={5}
-    tileWidth={280}
-    tileHeight={190}
-    gap={22}
-    tilt={14}
-    turn={-12}
-    speed={38}
-    lift={70}
-    overlayColor="#060010"
-    onTileClick={(item) => setActiveCertificateIndex(item.index)}
-  />
-</div>
+        <div className="h-full w-full">
+          <DriftWall
+            items={certificates.map((cert, index) => ({
+              image: cert.src,
+              title: cert.title,
+              // Combine the issuer and date into a single string
+              subtitle: `${cert.issuer} - ${cert.dateIssued}`, 
+              index,
+            }))}
+            columns={5}
+            tileWidth={280}
+            tileHeight={190}
+            gap={22}
+            tilt={14}
+            turn={-12}
+            speed={38}
+            lift={70}
+            overlayColor="#060010"
+            onTileClick={(item) => setActiveCertificateIndex(item.index)}
+          />
+        </div>
       </section>
 
       {/* Zoom / Lightbox Modal */}

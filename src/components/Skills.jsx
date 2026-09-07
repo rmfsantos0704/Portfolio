@@ -1,6 +1,10 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { Link } from "react-router-dom";
-import { Video, Heart, Coins, Radio, Smartphone, Layers, Award } from "lucide-react";
+import { 
+  Video, Heart, Coins, Radio, Smartphone, Layers, Award,
+  // New icons for your certificate skills:
+  FileCode, Code2, Shield, FileText, Sheet, Presentation
+} from "lucide-react";
 import { skills } from "../data/content";
 import SpotlightCard from "./ui/SpotlightCard";
 import OptionWheel from "./ui/OptionWheel";
@@ -10,14 +14,28 @@ const icons = {
   tailwind: Heart,
   mysql: Coins,
   nfc: Radio,
-  reactNative: Smartphone, // Added for Expo & React Native
+  reactNative: Smartphone, 
   mern: Layers,
+  // Added mappings for certificate skills
+  htmlCss: FileCode,
+  javascript: Code2,
+  cybersecurity: Shield,
+  word: FileText,
+  excel: Sheet,
+  powerpoint: Presentation,
 };
 
 export default function Skills() {
   const sectionRef = useRef(null);
   const [visible, setVisible] = useState(false);
-  const [selectedIndex, setSelectedIndex] = useState(0);
+
+  // Automatically find the index of React Native so it stays robust even if the array shifts
+  const defaultIndex = useMemo(() => {
+    const index = skills.findIndex((skill) => skill.id === "reactNative");
+    return index !== -1 ? index : 4;
+  }, []);
+
+  const [selectedIndex, setSelectedIndex] = useState(defaultIndex);
   const skillOptions = useMemo(() => skills.map((skill) => skill.title), []);
   const handleSkillChange = useCallback((index) => setSelectedIndex(index), []);
 
@@ -54,7 +72,6 @@ export default function Skills() {
             EXPERTISE
           </h2>
 
-          {/* Entry point into the standalone Certificates page */}
           <Link
             to="/certificates"
             className={`group inline-flex items-center gap-2 rounded-full border border-white/15 bg-surface px-4 py-2 text-xs font-semibold uppercase tracking-wider text-slate-300 transition-all duration-300 hover:border-violet-400/60 hover:bg-violet-400/10 hover:text-white ${
@@ -78,7 +95,7 @@ export default function Skills() {
             </p>
             <OptionWheel
               items={skillOptions}
-              defaultSelected={2}
+              defaultSelected={defaultIndex}
               onChange={handleSkillChange}
               textColor="#64748b"
               activeColor="#ffffff"
