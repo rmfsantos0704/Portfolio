@@ -15,7 +15,6 @@ const ReflectiveCard = ({
   glassDistortion = 0,
   className = '',
   style = {},
-  // Added — the original component hardcoded these as "ALEXANDER DOE" / "SENIOR DEVELOPER" / a fake ID.
   name = 'ALEXANDER DOE',
   title = 'SENIOR DEVELOPER',
   idNumber = '8901-2345-6789',
@@ -53,6 +52,24 @@ const ReflectiveCard = ({
       }
     };
   }, []);
+
+  // Dynamically scale font sizes based on character count
+  const getNameFontSize = (str) => {
+    const len = str?.length || 0;
+    if (len > 26) return '14px';
+    if (len > 20) return '16px';
+    if (len > 15) return '18px';
+    if (len > 12) return '20px';
+    return '24px';
+  };
+
+  const getTitleFontSize = (str) => {
+    const len = str?.length || 0;
+    if (len > 32) return '9px';
+    if (len > 24) return '10px';
+    if (len > 18) return '11px';
+    return '12px';
+  };
 
   const baseFrequency = 0.03 / Math.max(0.1, noiseScale);
   const saturation = 1 - Math.max(0, Math.min(1, grayscale));
@@ -133,8 +150,12 @@ const ReflectiveCard = ({
 
         <div className="card-body">
           <div className="user-info">
-            <h2 className="user-name">{name}</h2>
-            <p className="user-role">{title}</p>
+            <h2 className="user-name" style={{ fontSize: getNameFontSize(name) }}>
+              {name}
+            </h2>
+            <p className="user-role" style={{ fontSize: getTitleFontSize(title) }}>
+              {title}
+            </p>
           </div>
         </div>
 

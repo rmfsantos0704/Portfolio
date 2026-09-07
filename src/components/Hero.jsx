@@ -125,7 +125,7 @@ export default function Hero() {
             GitHub
           </a>
           <Link
-            to="/portfolio#contact"
+            to="/contact"
             className="rounded-full border border-indigo-200/40 px-6 py-3 text-sm font-semibold uppercase tracking-wider text-slate-300 transition-all duration-300 hover:border-indigo-400 hover:text-white sm:text-base"
           >
             Hire Me

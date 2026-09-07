@@ -5,7 +5,9 @@ export const profile = {
     "A Full-Stack Developer specializing in the traditional Laravel Blade stack, creating robust applications with hardware-level precision.",
   github: "https://github.com/rmfsantos0704",
   linkedin: "https://www.linkedin.com/in/russel-santos-36720b3a3/",
+  facebook: "https://www.facebook.com/russel.santos.901212/",
   email: "santosrussel0704@gmail.com",
+  phone: "0945 119 1938",
 };
 
 export const skills = [
@@ -219,8 +221,6 @@ theme: {
   },
 ];
 
-// Screenshots of your certificates, served from public/Certificates.
-// Add or remove entries here — the Certificates section renders whatever is in this array.
 // Screenshots of your certificates, served from public/Certificates.
 // Add or remove entries here — the Certificates section renders whatever is in this array.
 export const certificates = [

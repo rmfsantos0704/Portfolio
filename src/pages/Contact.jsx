@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import emailjs from "@emailjs/browser";
-import { Mail } from "lucide-react";
+import { Mail, Phone, Check, Copy } from "lucide-react";
 import { profile } from "../data/content";
 import ReflectiveCard from "@/components/ui/Reflectivecard";
 
@@ -20,20 +20,51 @@ function LinkedinIcon(props) {
   );
 }
 
+function FacebookIcon(props) {
+  return (
+    <svg viewBox="0 0 24 24" fill="currentColor" {...props}>
+      <path d="M14 13.5h2.5l1-4H14v-2c0-1.03 0-2 2-2h1.5V2.14c-.326-.043-1.557-.14-2.857-.14C11.928 2 10 3.657 10 6.7v2.8H7v4h3V22h4v-8.5z" />
+    </svg>
+  );
+}
+
 const SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
 const TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
 const PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
 
 export default function Contact() {
-  const [form, setForm] = useState({ name: "", email: "", message: "" });
-  const [status, setStatus] = useState("idle"); // idle | sending | sent | error
+  const [form, setForm] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    message: "",
+  });
+  const [status, setStatus] = useState("idle");
+  const [isLoaded, setIsLoaded] = useState(false);
+  const [copiedEmail, setCopiedEmail] = useState(false);
+  const [copiedPhone, setCopiedPhone] = useState(false);
 
   useEffect(() => {
     window.scrollTo({ top: 0, left: 0, behavior: "instant" });
+    const timer = setTimeout(() => setIsLoaded(true), 50);
+    return () => clearTimeout(timer);
   }, []);
 
   const handleChange = (e) => {
     setForm((f) => ({ ...f, [e.target.name]: e.target.value }));
+  };
+
+  const handleCopyEmail = () => {
+    const emailToCopy = profile.email || "santosrussel0704@gmail.com";
+    navigator.clipboard.writeText(emailToCopy);
+    setCopiedEmail(true);
+    setTimeout(() => setCopiedEmail(false), 2000);
+  };
+
+  const handleCopyPhone = () => {
+    navigator.clipboard.writeText("09451191938");
+    setCopiedPhone(true);
+    setTimeout(() => setCopiedPhone(false), 2000);
   };
 
   const handleSubmit = async (e) => {
@@ -49,11 +80,15 @@ export default function Contact() {
 
     setStatus("sending");
     try {
+      const fullName = `${form.firstName} ${form.lastName}`.trim();
+
       await emailjs.send(
         SERVICE_ID,
         TEMPLATE_ID,
         {
-          from_name: form.name,
+          from_name: fullName,
+          first_name: form.firstName,
+          last_name: form.lastName,
           from_email: form.email,
           message: form.message,
           to_email: profile.email,
@@ -61,18 +96,25 @@ export default function Contact() {
         { publicKey: PUBLIC_KEY }
       );
       setStatus("sent");
-      setForm({ name: "", email: "", message: "" });
+      setForm({ firstName: "", lastName: "", email: "", message: "" });
     } catch (err) {
       console.error(err);
       setStatus("error");
     }
   };
 
+  const fullName = `${form.firstName} ${form.lastName}`.trim();
+
   return (
-    <section id="contact" className="min-h-[100dvh] border-t border-white/5 py-14">
+    <section id="contact" className="min-h-[100dvh] border-t border-white/5 py-14 overflow-hidden">
       <div className="mx-auto grid min-h-[calc(100dvh-7rem)] max-w-7xl items-center gap-10 px-6 md:grid-cols-[minmax(0,1fr)_23rem] md:px-10 lg:gap-20">
         <div className="w-full">
-          <div className="text-center">
+          {/* Header Animation */}
+          <div
+            className={`transition-all duration-700 ease-out ${
+              isLoaded ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-6"
+            }`}
+          >
             <h2 className="font-display text-3xl font-bold tracking-tight text-white sm:text-4xl">
               Get in Touch
             </h2>
@@ -81,114 +123,210 @@ export default function Contact() {
             </p>
           </div>
 
-          <form id="contact-form" onSubmit={handleSubmit} className="mx-auto mt-12 w-full max-w-2xl space-y-6">
-            <div className="grid gap-6 sm:grid-cols-2">
-              <div>
-                <label
-                  htmlFor="name"
-                  className="mb-2 block text-xs font-bold uppercase tracking-wider text-slate-400"
-                >
-                  Name
-                </label>
-                <input
-                  id="name"
-                  name="name"
-                  type="text"
-                  required
-                  value={form.name}
-                  onChange={handleChange}
-                  placeholder="Your Name"
-                  className="w-full rounded-lg border border-white/10 bg-bg px-4 py-3 text-base text-white placeholder-slate-500 outline-none transition-colors hover:border-white/20 focus:border-indigo-2"
-                />
+          <form id="contact-form" onSubmit={handleSubmit} className="mt-12 w-full">
+            <div className="grid gap-8 lg:grid-cols-[16rem_1fr]">
+              {/* Left Side: Contact Details & Social Links */}
+              <div
+                className={`flex flex-col justify-between space-y-6 transition-all duration-700 delay-150 ease-out ${
+                  isLoaded ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-8"
+                }`}
+              >
+                <div className="space-y-4">
+                  <div className="flex items-center gap-3 text-slate-300">
+                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg border border-white/10 bg-white/5 text-violet-400">
+                      <Phone className="h-5 w-5" />
+                    </div>
+                    <div>
+                      <p className="text-xs font-bold uppercase tracking-wider text-slate-400">Phone</p>
+                      <div className="flex items-center gap-2">
+                        <a href="tel:09451191938" className="text-sm font-medium hover:text-white transition-colors">
+                          09451191938
+                        </a>
+                        <button
+                          type="button"
+                          onClick={handleCopyPhone}
+                          title="Copy Phone Number"
+                          className="text-slate-400 hover:text-white transition-colors"
+                        >
+                          {copiedPhone ? <Check size={14} className="text-emerald-400" /> : <Copy size={14} />}
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="flex items-center gap-3 text-slate-300">
+                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg border border-white/10 bg-white/5 text-violet-400">
+                      <Mail className="h-5 w-5" />
+                    </div>
+                    <div>
+                      <p className="text-xs font-bold uppercase tracking-wider text-slate-400">Email</p>
+                      <div className="flex items-center gap-2">
+                        <a
+                          href={`mailto:${profile.email || "santosrussel0704@gmail.com"}`}
+                          className="text-sm font-medium hover:text-white transition-colors break-all"
+                        >
+                          {profile.email || "santosrussel0704@gmail.com"}
+                        </a>
+                        <button
+                          type="button"
+                          onClick={handleCopyEmail}
+                          title="Copy Email"
+                          className="text-slate-400 hover:text-white transition-colors"
+                        >
+                          {copiedEmail ? <Check size={14} className="text-emerald-400" /> : <Copy size={14} />}
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div>
+                  <p className="mb-3 text-xs font-bold uppercase tracking-wider text-slate-400">
+                    Connect
+                  </p>
+                  <div className="flex items-center gap-3" aria-label="Social links">
+                    <a
+                      href={profile.github}
+                      target="_blank"
+                      rel="noreferrer"
+                      aria-label="GitHub"
+                      title="GitHub"
+                      className="flex h-11 w-11 items-center justify-center rounded-full border border-white/15 text-slate-300 transition-all duration-200 hover:-translate-y-1 hover:border-violet-400 hover:text-white"
+                    >
+                      <GithubIcon className="h-5 w-5" aria-hidden="true" />
+                    </a>
+                    <a
+                      href={profile.linkedin}
+                      target="_blank"
+                      rel="noreferrer"
+                      aria-label="LinkedIn"
+                      title="LinkedIn"
+                      className="flex h-11 w-11 items-center justify-center rounded-full border border-white/15 text-slate-300 transition-all duration-200 hover:-translate-y-1 hover:border-violet-400 hover:text-white"
+                    >
+                      <LinkedinIcon className="h-5 w-5" aria-hidden="true" />
+                    </a>
+                    <a
+                      href={profile.facebook}
+                      target="_blank"
+                      rel="noreferrer"
+                      aria-label="Facebook"
+                      title="Facebook"
+                      className="flex h-11 w-11 items-center justify-center rounded-full border border-white/15 text-slate-300 transition-all duration-200 hover:-translate-y-1 hover:border-violet-400 hover:text-white"
+                    >
+                      <FacebookIcon className="h-5 w-5" aria-hidden="true" />
+                    </a>
+                  </div>
+                </div>
               </div>
-              <div>
-                <label
-                  htmlFor="email"
-                  className="mb-2 block text-xs font-bold uppercase tracking-wider text-slate-400"
-                >
-                  Email
-                </label>
-                <input
-                  id="email"
-                  name="email"
-                  type="email"
-                  required
-                  value={form.email}
-                  onChange={handleChange}
-                  placeholder="email@example.com"
-                  className="w-full rounded-lg border border-white/10 bg-bg px-4 py-3 text-base text-white placeholder-slate-500 outline-none transition-colors hover:border-white/20 focus:border-indigo-2"
-                />
+
+              {/* Right Side: Text Fields */}
+              <div
+                className={`space-y-6 transition-all duration-700 delay-300 ease-out ${
+                  isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+                }`}
+              >
+                <div className="grid gap-6 sm:grid-cols-2">
+                  <div>
+                    <label
+                      htmlFor="firstName"
+                      className="mb-2 block text-xs font-bold uppercase tracking-wider text-slate-400"
+                    >
+                      First Name
+                    </label>
+                    <input
+                      id="firstName"
+                      name="firstName"
+                      type="text"
+                      required
+                      value={form.firstName}
+                      onChange={handleChange}
+                      placeholder="Your First Name"
+                      className="w-full rounded-lg border border-white/10 bg-bg px-4 py-3 text-base text-white placeholder-slate-500 outline-none transition-colors hover:border-white/20 focus:border-indigo-2"
+                    />
+                  </div>
+
+                  <div>
+                    <label
+                      htmlFor="lastName"
+                      className="mb-2 block text-xs font-bold uppercase tracking-wider text-slate-400"
+                    >
+                      Last Name
+                    </label>
+                    <input
+                      id="lastName"
+                      name="lastName"
+                      type="text"
+                      required
+                      value={form.lastName}
+                      onChange={handleChange}
+                      placeholder="Your Last Name"
+                      className="w-full rounded-lg border border-white/10 bg-bg px-4 py-3 text-base text-white placeholder-slate-500 outline-none transition-colors hover:border-white/20 focus:border-indigo-2"
+                    />
+                  </div>
+                </div>
+
+                <div>
+                  <label
+                    htmlFor="email"
+                    className="mb-2 block text-xs font-bold uppercase tracking-wider text-slate-400"
+                  >
+                    Email
+                  </label>
+                  <input
+                    id="email"
+                    name="email"
+                    type="email"
+                    required
+                    value={form.email}
+                    onChange={handleChange}
+                    placeholder="email@example.com"
+                    className="w-full rounded-lg border border-white/10 bg-bg px-4 py-3 text-base text-white placeholder-slate-500 outline-none transition-colors hover:border-white/20 focus:border-indigo-2"
+                  />
+                </div>
+
+                <div>
+                  <label
+                    htmlFor="message"
+                    className="mb-2 block text-xs font-bold uppercase tracking-wider text-slate-400"
+                  >
+                    Message
+                  </label>
+                  <textarea
+                    id="message"
+                    name="message"
+                    required
+                    rows={5}
+                    value={form.message}
+                    onChange={handleChange}
+                    placeholder="Tell me about your project..."
+                    className="w-full resize-none rounded-lg border border-white/10 bg-bg px-4 py-3 text-base text-white placeholder-slate-500 outline-none transition-colors hover:border-white/20 focus:border-indigo-2"
+                  />
+                </div>
+
+                {status === "sent" && (
+                  <p className="text-center text-sm text-emerald-400">
+                    Message sent. I&apos;ll get back to you soon.
+                  </p>
+                )}
+                {status === "error" && (
+                  <p className="text-center text-sm text-rose-400">
+                    Something went wrong. Check your EmailJS setup or email me directly at{" "}
+                    {profile.email || "santosrussel0704@gmail.com"}.
+                  </p>
+                )}
               </div>
-            </div>
-
-            <div>
-              <label
-                htmlFor="message"
-                className="mb-2 block text-xs font-bold uppercase tracking-wider text-slate-400"
-              >
-                Message
-              </label>
-              <textarea
-                id="message"
-                name="message"
-                required
-                rows={5}
-                value={form.message}
-                onChange={handleChange}
-                placeholder="Tell me about your project..."
-                className="w-full resize-none rounded-lg border border-white/10 bg-bg px-4 py-3 text-base text-white placeholder-slate-500 outline-none transition-colors hover:border-white/20 focus:border-indigo-2"
-              />
-            </div>
-
-            {status === "sent" && (
-              <p className="text-center text-sm text-emerald-400">
-                Message sent. I&apos;ll get back to you soon.
-              </p>
-            )}
-            {status === "error" && (
-              <p className="text-center text-sm text-rose-400">
-                Something went wrong. Check your EmailJS setup or email me directly at{" "}
-                {profile.email}.
-              </p>
-            )}
-
-            <div className="flex items-center justify-center gap-3 pt-2" aria-label="Social links">
-              <a
-                href={profile.github}
-                target="_blank"
-                rel="noreferrer"
-                aria-label="GitHub"
-                title="GitHub"
-                className="flex h-11 w-11 items-center justify-center rounded-full border border-white/15 text-slate-300 transition-all duration-200 hover:-translate-y-1 hover:border-violet-400 hover:text-white"
-              >
-                <GithubIcon className="h-5 w-5" aria-hidden="true" />
-              </a>
-              <a
-                href={profile.linkedin}
-                target="_blank"
-                rel="noreferrer"
-                aria-label="LinkedIn"
-                title="LinkedIn"
-                className="flex h-11 w-11 items-center justify-center rounded-full border border-white/15 text-slate-300 transition-all duration-200 hover:-translate-y-1 hover:border-violet-400 hover:text-white"
-              >
-                <LinkedinIcon className="h-5 w-5" aria-hidden="true" />
-              </a>
-              <a
-                href={`mailto:${profile.email}`}
-                aria-label="Email"
-                title="Email"
-                className="flex h-11 w-11 items-center justify-center rounded-full border border-white/15 text-slate-300 transition-all duration-200 hover:-translate-y-1 hover:border-violet-400 hover:text-white"
-              >
-                <Mail size={20} strokeWidth={1.8} aria-hidden="true" />
-              </a>
             </div>
           </form>
-
         </div>
 
-        <div className="flex flex-col items-center md:sticky md:top-24">
+        {/* Reflective Card & Button Animation */}
+        <div
+          className={`flex flex-col items-center md:sticky md:top-24 transition-all duration-700 delay-450 ease-out ${
+            isLoaded ? "opacity-100 translate-y-0 scale-100" : "opacity-0 translate-y-10 scale-95"
+          }`}
+        >
           <ReflectiveCard
-            name={form.name.trim() ? form.name.toUpperCase() : "YOUR NAME"}
+            name={fullName ? fullName.toUpperCase() : "YOUR NAME"}
             title={form.email.trim() || "your@email.com"}
             idNumber="RS-0704-DEV"
             idLabel="DEVELOPER ID"
