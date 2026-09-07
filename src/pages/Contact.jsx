@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import emailjs from "@emailjs/browser";
-import { Mail, Phone, Check, Copy } from "lucide-react";
+import { Mail, Phone, Check, Copy, ArrowLeft } from "lucide-react";
 import { profile } from "../data/content";
 import ReflectiveCard from "@/components/ui/Reflectivecard";
 
@@ -23,7 +23,7 @@ function LinkedinIcon(props) {
 function FacebookIcon(props) {
   return (
     <svg viewBox="0 0 24 24" fill="currentColor" {...props}>
-      <path d="M14 13.5h2.5l1-4H14v-2c0-1.03 0-2 2-2h1.5V2.14c-.326-.043-1.557-.14-2.857-.14C11.928 2 10 3.657 10 6.7v2.8H7v4h3V22h4v-8.5z" />
+      <path d="M14 13.5h2.5l1-4H14v-2c0-1.03 0-2 2-2h1.5V2.14c-.326-.043-1.557-.14-2.857-.14C11.928 2 10 3.657 10 6.7v2.8H7v4h3V22h4v-8.5Z" />
     </svg>
   );
 }
@@ -106,7 +106,22 @@ export default function Contact() {
   const fullName = `${form.firstName} ${form.lastName}`.trim();
 
   return (
-    <section id="contact" className="min-h-[100dvh] border-t border-white/5 py-14 overflow-hidden">
+    <section id="contact" className="relative min-h-[100dvh] border-t border-white/5 py-14 overflow-hidden">
+      {/* Fixed Back to Portfolio Button on Top-Left of the Screen */}
+      <div
+        className={`fixed top-6 left-6 z-50 transition-all duration-700 ease-out ${
+          isLoaded ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-4"
+        }`}
+      >
+        <a
+          href="/"
+          className="group flex items-center gap-2 rounded-full border border-white/10 bg-slate-900/80 px-4 py-2 text-sm font-medium text-slate-300 backdrop-blur-md transition-all hover:border-violet-400 hover:bg-white/10 hover:text-white shadow-lg"
+        >
+          <ArrowLeft className="h-4 w-4 transition-transform group-hover:-translate-x-1" />
+          <span>Back to Portfolio</span>
+        </a>
+      </div>
+
       <div className="mx-auto grid min-h-[calc(100dvh-7rem)] max-w-7xl items-center gap-10 px-6 md:grid-cols-[minmax(0,1fr)_23rem] md:px-10 lg:gap-20">
         <div className="w-full">
           {/* Header Animation */}
