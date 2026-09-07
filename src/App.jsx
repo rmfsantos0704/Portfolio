@@ -25,8 +25,8 @@ function App() {
           logo={<span>RS<span aria-hidden="true">.</span></span>}
           items={menuItems.map((item) => ({ label: item.label, href: item.link }))}
           menuAriaLabel="Toggle portfolio navigation"
-          menuBg="#ffffff"
-          menuContentColor="#4f46e5"
+          menuBg="#26244B"
+          menuContentColor="#ffffff"
         />
       )}
       <Routes>

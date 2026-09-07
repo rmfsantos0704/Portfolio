@@ -114,7 +114,7 @@ export default function Contact() {
         }`}
       >
         <a
-          href="/"
+          href="/portfolio"
           className="group flex items-center gap-2 rounded-full border border-white/10 bg-slate-900/80 px-4 py-2 text-sm font-medium text-slate-300 backdrop-blur-md transition-all hover:border-violet-400 hover:bg-white/10 hover:text-white shadow-lg"
         >
           <ArrowLeft className="h-4 w-4 transition-transform group-hover:-translate-x-1" />
