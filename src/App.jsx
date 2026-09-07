@@ -3,6 +3,7 @@ import BubbleMenu from "./components/ui/BubbleMenu";
 import Entry from "./pages/Entry";
 import Home from "./pages/Home";
 import ProjectDetail from "./pages/ProjectDetail";
+import Certificates from "./pages/Certificates";
 
 function App() {
   const location = useLocation();
@@ -12,7 +13,7 @@ function App() {
     { label: "About", link: "/portfolio#about" },
     { label: "Skills", link: "/portfolio#skills" },
     { label: "Projects", link: "/portfolio#projects" },
-    { label: "Certificates", link: "/portfolio#certificates" },
+    { label: "Certificates", link: "/certificates" },
     { label: "Contact", link: "/portfolio#contact" },
   ];
 
@@ -33,7 +34,7 @@ function App() {
         <Route path="/about" element={<Navigate to="/portfolio#about" replace />} />
         <Route path="/skills" element={<Navigate to="/portfolio#skills" replace />} />
         <Route path="/projects" element={<Navigate to="/portfolio#projects" replace />} />
-        <Route path="/certificates" element={<Navigate to="/portfolio#certificates" replace />} />
+        <Route path="/certificates" element={<Certificates />} />
         <Route path="/contact" element={<Navigate to="/portfolio#contact" replace />} />
         <Route path="/projects/:id" element={<ProjectDetail />} />
       </Routes>

@@ -45,7 +45,7 @@ export default function Skills() {
   return (
     <section ref={sectionRef} id="skills" className="relative flex min-h-[100dvh] items-center border-t border-white/5 py-20 sm:py-24">
       <div className="mx-auto w-full max-w-7xl px-6 md:px-10">
-        <div className="flex flex-col items-center gap-5">
+        <div className="flex flex-col items-center gap-4">
           <h2
             className={`text-center font-display text-4xl font-semibold tracking-wide text-white transition-all duration-700 ease-out sm:text-5xl lg:text-6xl ${
               visible ? "translate-y-0 opacity-100" : "translate-y-6 opacity-0"
@@ -54,6 +54,17 @@ export default function Skills() {
             EXPERTISE
           </h2>
 
+          {/* Entry point into the standalone Certificates page */}
+          <Link
+            to="/certificates"
+            className={`group inline-flex items-center gap-2 rounded-full border border-white/15 bg-surface px-4 py-2 text-xs font-semibold uppercase tracking-wider text-slate-300 transition-all duration-300 hover:border-violet-400/60 hover:bg-violet-400/10 hover:text-white ${
+              visible ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0"
+            }`}
+            style={{ transitionDelay: visible ? "150ms" : "0ms" }}
+          >
+            <Award size={14} className="text-violet-300 transition-transform duration-300 group-hover:scale-110" />
+            View Certifications
+          </Link>
         </div>
 
         <div className="mt-12 grid min-h-[32rem] items-center gap-12 md:grid-cols-[minmax(20rem,0.85fr)_minmax(0,1.15fr)] lg:mt-16 lg:gap-28">

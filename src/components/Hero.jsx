@@ -84,16 +84,16 @@ export default function Hero() {
           Full-Stack Developer
         </p>
 
-        {/* Animated name */}
+{/* Animated name */}
         <div className="mt-3 h-24 w-full min-w-0 sm:h-28 md:h-32 lg:h-40">
           <WarpText
             text={`${profile.firstName} ${profile.lastName}`}
             className="h-full w-full"
-            color="#a5b4fc"
+            color="#ffffff" /* Changed from "#a5b4fc" to "#ffffff" */
             fontSize="clamp(2.75rem, 8vw, 5.5rem)"
             fontWeight={700}
             letterSpacing="-0.03em"
-            textAlign="center" /* Changed from "left" to "center" */
+            textAlign="center"
           />
         </div>
 

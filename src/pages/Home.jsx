@@ -2,7 +2,6 @@ import Hero from "../components/Hero";
 import About from "../components/About";
 import Skills from "../components/Skills";
 import Projects from "../components/Projects";
-import Certificates from "./Certificates";
 import Contact from "../components/Contact";
 import Plasma from "../components/ui/Plasma";
 
@@ -17,7 +16,6 @@ export default function Home() {
       <About />
       <Skills />
       <Projects />
-      <Certificates />
       <Contact />
       </main>
     </div>
