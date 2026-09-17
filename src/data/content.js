@@ -5,7 +5,6 @@ export const profile = {
     "A Full-Stack Developer specializing in the traditional Laravel Blade stack, creating robust applications with hardware-level precision.",
   github: "https://github.com/rmfsantos0704",
   linkedin: "https://www.linkedin.com/in/russel-santos-36720b3a3/",
-  facebook: "https://www.facebook.com/russel.santos.901212/",
   email: "santosrussel0704@gmail.com",
   phone: "0945 119 1938",
 };
@@ -217,6 +216,50 @@ theme: {
       "/TatAI/screenshot-5.png",
       "/TatAI/screenshot-6.png",
       "/TatAI/screenshot-7.png",
+    ],
+  },
+  {
+    id: "booknight",
+    label: "FULL-STACK \u2022 BOOKMARK MANAGER",
+    labelColor: "text-emerald-300",
+    badgeColor: "bg-emerald-500/10 border-emerald-400/30",
+    title: "Booknight",
+    deviceType: "desktop",
+    // Placeholder path — drop the Booknight logo file at this location in /public.
+    logo: "/logos/booknight.png",
+    // Deep-green accent + warm paper-toned surfaces, matching Booknight's actual design system
+    // (dark sidebar, warm paper cards, single deep-green accent, editorial serif + grotesque sans).
+    theme: {
+      accent: "#1f6f4a",
+      secondary: "#2f8f63",
+      highlight: "#f0e6d2",
+      title: "#1f6f4a",
+      titleOnDark: "#f0e6d2",
+      surface: "#16211c",
+      backdrop: "#0c1310",
+      pageBackground: "#10160f",
+      pageSurface: "#f3e8d3",
+      pageText: "#f3ecd9",
+      pageMuted: "#a89a7c",
+    },
+    description:
+      "A social bookmark and link-curation platform with automated metadata enrichment, fuzzy search, team digests, and a companion browser extension.",
+    watermark: "BOOK",
+    gradient: "from-emerald-950 via-stone-950 to-slate-950",
+    challenge:
+      "Newly-saved bookmarks needed their metadata scraped and digest subscriptions checked on a schedule — classic background-job territory. A persistent BullMQ/Redis worker process was the first approach, but free-tier hosting for an always-on worker proved fragile: platforms either charge for genuine background-worker hosting, or cap free-tier uptime in a way a 24/7 process burns through almost immediately.",
+    solution:
+      "Retired the persistent worker entirely in favor of short-lived, HTTP-triggered processing. A free external scheduler calls a secret-protected endpoint every few minutes; that endpoint atomically claims a batch of pending bookmarks (preventing double-processing from overlapping triggers), scrapes them, and returns. No always-on server, no credit card in the stack — near-instant processing traded for reliable, sustainable \"within a few minutes\" processing on free tiers alone.",
+    techStack: ["React (Vite) & Tailwind", "Node.js & Express", "MongoDB Atlas Search", "Chrome Extension (Manifest V3)"],
+    // Add your screenshot URLs here once uploaded, in the order you want them to appear in the slideshow.
+    screenshots: [
+      "/Booknight/Screenshot-1.png",
+      "/Booknight/Screenshot-2.png",
+            "/Booknight/Screenshot-3.png",
+      "/Booknight/Screenshot-4.png",
+            "/Booknight/Screenshot-5.png",
+      "/Booknight/Screenshot-6.png",
+
     ],
   },
 ];

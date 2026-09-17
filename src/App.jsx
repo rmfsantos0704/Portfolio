@@ -1,5 +1,6 @@
 import { Navigate, Routes, Route, useLocation } from "react-router-dom";
 import BubbleMenu from "./components/ui/BubbleMenu";
+import ScrollHandler from "./components/ScrollHandler"; // <-- 1. Import it here
 import Entry from "./pages/Entry";
 import Home from "./pages/Home";
 import ProjectDetail from "./pages/ProjectDetail";
@@ -20,6 +21,10 @@ function App() {
 
   return (
     <div className={isEntry ? "entry-shell" : "min-h-screen bg-bg"}>
+      
+      {/* 2. Add it here! It will listen to every click and scroll smoothly */}
+      <ScrollHandler /> 
+
       {!isEntry && location.pathname !== "/projects" && !location.pathname.startsWith("/projects/") && (
         <BubbleMenu
           logo={<span>RS<span aria-hidden="true">.</span></span>}
