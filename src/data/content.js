@@ -220,6 +220,7 @@ theme: {
   },
   {
     id: "booknight",
+    link: "https://snowed-landing.vercel.app/",
     label: "FULL-STACK \u2022 BOOKMARK MANAGER",
     labelColor: "text-emerald-300",
     badgeColor: "bg-emerald-500/10 border-emerald-400/30",

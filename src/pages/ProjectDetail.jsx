@@ -94,7 +94,20 @@ export default function ProjectDetail() {
             </a>
           </div>
         )}
-
+        {project.id === "booknight" && (
+          <div className="mt-6">
+            <a
+              href="https://booknight-rmfs.vercel.app"
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center gap-2 rounded-full border px-5 py-2.5 text-xs font-bold text-white backdrop-blur-sm transition-all duration-300 hover:bg-white/10"
+              style={{ borderColor: `${project.theme.accent}88`, backgroundColor: `${project.theme.accent}1a` }}
+            >
+              <span>Visit Booknight</span>
+              <ExternalLink size={13} />
+            </a>
+          </div>
+        )}
         <div className="mt-14">
           <Slideshow
             images={project.screenshots}
@@ -138,20 +151,6 @@ export default function ProjectDetail() {
               </ul>
             </div>
 
-            {project.id === "snowed" && (
-              <div className="border-t border-white/10 pt-6">
-                <a
-                  href="https://snowed-landing.vercel.app/"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="flex w-full items-center justify-center gap-2 rounded-xl px-4 py-3 text-xs font-bold text-white transition-colors hover:brightness-110 shadow-lg"
-                  style={{ backgroundColor: project.theme.accent, boxShadow: `0 10px 25px -12px ${project.theme.accent}` }}
-                >
-                  <span>Visit SnowEd Landing</span>
-                  <ExternalLink size={14} />
-                </a>
-              </div>
-            )}
           </aside>
         </div>
 
