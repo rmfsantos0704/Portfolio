@@ -2,7 +2,7 @@ export const profile = {
   firstName: "Russel",
   lastName: "Santos",
   tagline:
-    "A Full-Stack Developer specializing in the traditional Laravel Blade stack, creating robust applications with hardware-level precision.",
+    "A Full-Stack Developer specializing in the traditional Laravel Blade and MERN stack, creating robust applications with hardware-level precision.",
   github: "https://github.com/rmfsantos0704",
   linkedin: "https://www.linkedin.com/in/russel-santos-36720b3a3/",
   email: "santosrussel0704@gmail.com",
