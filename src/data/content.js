@@ -2,7 +2,7 @@ export const profile = {
   firstName: "Russel",
   lastName: "Santos",
   tagline:
-    "A Full-Stack Developer specializing in the traditional Laravel Blade and MERN stack, creating robust applications with hardware-level precision.",
+    "A Full-Stack Developer specializing in the traditional Laravel Blade stack, creating robust applications with hardware-level precision.",
   github: "https://github.com/rmfsantos0704",
   linkedin: "https://www.linkedin.com/in/russel-santos-36720b3a3/",
   email: "santosrussel0704@gmail.com",
@@ -157,6 +157,8 @@ theme: {
       pageMuted: "#477da6",
     },
     link: "https://snowed-landing.vercel.app/",
+    // Placeholder — replace with the real GitHub repo once you're ready to link it.
+    repo: "https://github.com/rmfsantos0704/nurse-scheduler-app",
     description:
       "A mobile scheduler and note-taking app for students. It helps users track courses, deadlines, and completion status while keeping note-taking photo-first.",
     watermark: "SNOW",
@@ -200,6 +202,9 @@ theme: {
     },
     description:
       "An intelligent home assistant powered by Natural Language Processing (NLP) and a rule-based algorithm. I served as QA, testing the assistant's responses and behavior rather than writing its core code.",
+    // Placeholder — since your role here was QA rather than development, double-check
+    // this points to something appropriate to share (e.g. your test docs), or remove it.
+    repo: "https://github.com/SubiCodes/TatAI",
     watermark: "QA",
     gradient: "from-indigo-950 via-violet-950 to-slate-950",
     challenge:
@@ -220,7 +225,6 @@ theme: {
   },
   {
     id: "booknight",
-    link: "https://snowed-landing.vercel.app/",
     label: "FULL-STACK \u2022 BOOKMARK MANAGER",
     labelColor: "text-emerald-300",
     badgeColor: "bg-emerald-500/10 border-emerald-400/30",
@@ -245,6 +249,9 @@ theme: {
     },
     description:
       "A social bookmark and link-curation platform with automated metadata enrichment, fuzzy search, team digests, and a companion browser extension.",
+    // Placeholders — replace with the real deployed URL and GitHub repo once ready.
+    link: "https://booknight-rmfs.vercel.app/board",
+    repo: "https://github.com/rmfsantos0704/BookNight",
     watermark: "BOOK",
     gradient: "from-emerald-950 via-stone-950 to-slate-950",
     challenge:
@@ -260,7 +267,6 @@ theme: {
       "/Booknight/Screenshot-4.png",
             "/Booknight/Screenshot-5.png",
       "/Booknight/Screenshot-6.png",
-
     ],
   },
 ];
