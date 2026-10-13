@@ -316,6 +316,9 @@ theme: {
       "/lox-cli/Screenshot-3.png",
       "/lox-cli/Screenshot-4.png",
       "/lox-cli/Screenshot-5.png",
+      "/lox-cli/Screenshot-6.png",
+      "/lox-cli/Screenshot-7.png",
+      "/lox-cli/Screenshot-8.png",
     ],
   },
 ];
