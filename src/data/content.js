@@ -269,6 +269,55 @@ theme: {
       "/Booknight/Screenshot-6.png",
     ],
   },
+
+    {
+    id: "lox-cli",
+    label: "CLI TOOL \u2022 AI GIT COMMITS",
+    labelColor: "text-orange-300",
+    badgeColor: "bg-orange-500/10 border-orange-400/30",
+    title: "LOX",
+    deviceType: "desktop",
+    // Placeholder path — drop the LOX logo/icon file at this location in /public.
+    logo: "/logos/lox-cli.png",
+    theme: {
+      accent: "#f97316",
+      secondary: "#c2410c",
+      highlight: "#fb923c",
+      title: "#fb923c",
+      titleOnDark: "#fb923c",
+      surface: "#1a0f08",
+      backdrop: "#120a05",
+      pageBackground: "#120a05",
+      pageSurface: "#1f130b",
+      pageText: "#fff3ea",
+      pageMuted: "#c9a186",
+    },
+    repo: "https://github.com/rmfsantos0704/lox-cli",
+    description:
+      "An autonomous CLI tool that reads your git diff, groups unrelated changes, and writes strict, granular Conventional Commits using a 100% free local AI model — no API keys, no cost, no rate limits.",
+    watermark: "LOX",
+   gradient: "from-orange-950 via-stone-950 to-black",
+    challenge:
+      "Developers often bundle unrelated changes — a bug fix, a doc tweak, a new feature — into a single vague commit message, making history hard to read and bisect later.",
+    solution:
+      "Built a Node.js CLI that parses `git status`/`git diff` output, categorizes files into commit types (feat, fix, docs, refactor, test, chore, style) using path rules, status flags, and a regex comment interceptor, then sends each diff to a local Ollama model with Few-Shot prompting to generate clean, imperative commit descriptions. Each group is staged and committed independently in one run, with interactive file filtering, a workspace status preview, a semantic-versioning release helper, and automated changelog generation layered on top.",
+    techStack: ["Node.js", "Ollama (Local AI)", "Inquirer.js", "Git CLI", "Few-Shot Prompting"],
+    sdlc: [
+      { phase: "Planning", description: "Scoped the problem of mixed, vague commits and defined a feature set: multi-commit grouping, local AI descriptions, versioning, and changelog automation, with zero paid dependencies." },
+      { phase: "Design", description: "Designed the file-categorization rules (path/status/diff heuristics) and the Few-Shot prompt templates that keep local AI output focused on imperative, hallucination-free summaries." },
+      { phase: "Development", description: "Built the CLI commands (commit, status, log, release, changelog, config) around Git plumbing commands and a local Ollama integration, with `.loxrc.json` for per-project configuration." },
+      { phase: "Testing", description: "Tested categorization accuracy across mixed-change scenarios, verified interactive prompts and pre-commit safety checks, and validated semantic version bumps against real commit histories." },
+      { phase: "Deployment & Maintenance", description: "Published via npm link for global CLI installation, with ongoing refinement of prompt accuracy and model support based on usage feedback." },
+    ],
+    // Add your screenshot URLs here once you upload them, in the order you want them to appear in the slideshow.
+    screenshots: [
+      "/lox-cli/Screenshot-1.png",
+      "/lox-cli/Screenshot-2.png",
+      "/lox-cli/Screenshot-3.png",
+      "/lox-cli/Screenshot-4.png",
+      "/lox-cli/Screenshot-5.png",
+    ],
+  },
 ];
 
 // Screenshots of your certificates, served from public/Certificates.
