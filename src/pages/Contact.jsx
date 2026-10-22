@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+﻿import { useEffect, useState } from "react";
 import emailjs from "@emailjs/browser";
 import { Mail, Phone, Check, Copy, ArrowLeft } from "lucide-react";
 import { profile } from "../data/content";
@@ -37,6 +37,7 @@ export default function Contact() {
     firstName: "",
     lastName: "",
     email: "",
+    role: "",
     message: "",
   });
   const [status, setStatus] = useState("idle");
@@ -96,7 +97,7 @@ export default function Contact() {
         { publicKey: PUBLIC_KEY }
       );
       setStatus("sent");
-      setForm({ firstName: "", lastName: "", email: "", message: "" });
+      setForm({ firstName: "", lastName: "", email: "", role: "", message: "" });
     } catch (err) {
       console.error(err);
       setStatus("error");
@@ -122,7 +123,7 @@ export default function Contact() {
         </a>
       </div>
 
-      <div className="mx-auto grid min-h-[calc(100dvh-7rem)] max-w-7xl items-center gap-10 px-6 md:grid-cols-[minmax(0,1fr)_23rem] md:px-10 lg:gap-20">
+      <div className="mx-auto grid min-h-[calc(100dvh-7rem)] max-w-7xl items-center gap-10 px-6 md:grid-cols-[minmax(0,1fr)_20rem] md:px-10 lg:gap-20">
         <div className="w-full">
           {/* Header Animation */}
           <div
@@ -280,23 +281,43 @@ export default function Contact() {
                   </div>
                 </div>
 
-                <div>
-                  <label
-                    htmlFor="email"
-                    className="mb-2 block text-xs font-bold uppercase tracking-wider text-slate-400"
-                  >
-                    Email
-                  </label>
-                  <input
-                    id="email"
-                    name="email"
-                    type="email"
-                    required
-                    value={form.email}
-                    onChange={handleChange}
-                    placeholder="email@example.com"
-                    className="w-full rounded-lg border border-white/10 bg-bg px-4 py-3 text-base text-white placeholder-slate-500 outline-none transition-colors hover:border-white/20 focus:border-indigo-2"
-                  />
+                <div className="grid gap-6 sm:grid-cols-2">
+                  <div>
+                    <label
+                      htmlFor="email"
+                      className="mb-2 block text-xs font-bold uppercase tracking-wider text-slate-400"
+                    >
+                      Email
+                    </label>
+                    <input
+                      id="email"
+                      name="email"
+                      type="email"
+                      required
+                      value={form.email}
+                      onChange={handleChange}
+                      placeholder="email@example.com"
+                      className="w-full rounded-lg border border-white/10 bg-bg px-4 py-3 text-base text-white placeholder-slate-500 outline-none transition-colors hover:border-white/20 focus:border-indigo-2"
+                    />
+                  </div>
+
+                  <div>
+                    <label
+                      htmlFor="role"
+                      className="mb-2 block text-xs font-bold uppercase tracking-wider text-slate-400"
+                    >
+                      Role / Title
+                    </label>
+                    <input
+                      id="role"
+                      name="role"
+                      type="text"
+                      value={form.role}
+                      onChange={handleChange}
+                      placeholder="e.g. Senior Developer"
+                      className="w-full rounded-lg border border-white/10 bg-bg px-4 py-3 text-base text-white placeholder-slate-500 outline-none transition-colors hover:border-white/20 focus:border-indigo-2"
+                    />
+                  </div>
                 </div>
 
                 <div>
@@ -334,7 +355,7 @@ export default function Contact() {
           </form>
         </div>
 
-        {/* Reflective Card & Button Animation */}
+        {/* Smaller Reflective Card & Button Animation */}
         <div
           className={`flex flex-col items-center md:sticky md:top-24 transition-all duration-700 delay-450 ease-out ${
             isLoaded ? "opacity-100 translate-y-0 scale-100" : "opacity-0 translate-y-10 scale-95"
@@ -342,18 +363,20 @@ export default function Contact() {
         >
           <ReflectiveCard
             name={fullName ? fullName.toUpperCase() : "YOUR NAME"}
-            title={form.email.trim() || "your@email.com"}
-            idNumber="RS-0704-DEV"
-            idLabel="DEVELOPER ID"
-            badgeLabel="AVAILABLE FOR WORK"
+            role={form.role.trim() || "Senior Developer"}
+            badge="Available for Work"
+            status="Active"
+            idLabel="Developer ID"
+            idValue="RS-0704-DEV"
+            width={260}
+            height={390}
             grayscale={0}
           />
-
           <button
             type="submit"
             form="contact-form"
             disabled={status === "sending"}
-            className="mt-6 w-full max-w-[23rem] rounded-lg bg-indigo px-6 py-4 text-base font-bold text-white shadow-lg shadow-indigo/40 transition-transform hover:-translate-y-0.5 disabled:cursor-not-allowed disabled:opacity-60"
+            className="mt-6 w-full max-w-[260px] rounded-lg bg-indigo px-6 py-4 text-base font-bold text-white shadow-lg shadow-indigo/40 transition-transform hover:-translate-y-0.5 disabled:cursor-not-allowed disabled:opacity-60"
           >
             {status === "sending" ? "Sending..." : "Send Message"}
           </button>

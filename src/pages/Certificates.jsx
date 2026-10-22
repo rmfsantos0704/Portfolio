@@ -1,7 +1,6 @@
 import { useEffect, useState, useCallback } from "react";
 import { X, ChevronLeft, ChevronRight, ArrowLeft } from "lucide-react";
 import { certificates } from "../data/content";
-import DriftWall from "../components/ui/DriftWall";
 
 export default function Certificates() {
   const [activeCertificateIndex, setActiveCertificateIndex] = useState(null);
@@ -43,12 +42,11 @@ export default function Certificates() {
 
   return (
     <>
-      <section id="certificates" className="relative h-screen w-screen overflow-hidden bg-[#060010]">
-        
+      <section id="certificates" className="relative min-h-screen w-full bg-[#060010] pb-24">
         {/* Back to Portfolio Button */}
         <a
           href="/portfolio"
-          className={`absolute left-4 top-4 z-50 flex items-center gap-2 rounded-full border border-white/20 bg-black/50 px-4 py-2 text-sm font-medium text-slate-200 backdrop-blur-md transition-all duration-700 hover:border-violet-400 hover:bg-violet-400/20 hover:text-white sm:left-6 sm:top-6 ${
+          className={`fixed left-4 top-4 z-50 flex items-center gap-2 rounded-full border border-white/20 bg-black/50 px-4 py-2 text-sm font-medium text-slate-200 backdrop-blur-md transition-all duration-700 hover:border-violet-400 hover:bg-violet-400/20 hover:text-white sm:left-6 sm:top-6 ${
             visible ? "translate-x-0 opacity-100" : "-translate-x-4 opacity-0"
           }`}
         >
@@ -56,8 +54,8 @@ export default function Certificates() {
           Back to Portfolio
         </a>
 
-        {/* Floating Header */}
-        <div className="pointer-events-none absolute left-0 right-0 top-10 z-10 mx-auto max-w-4xl px-6 text-center">
+        {/* Header */}
+        <div className="mx-auto max-w-4xl px-6 pb-12 pt-24 text-center sm:pt-28">
           <span
             className={`inline-block rounded-full border border-violet-400/30 bg-violet-500/10 px-3 py-1 text-xs font-bold tracking-wider text-violet-300 transition-all duration-700 ease-out ${
               visible ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0"
@@ -85,27 +83,40 @@ export default function Certificates() {
           </p>
         </div>
 
-        {/* 100% Canvas Drift Wall */}
-        <div className="h-full w-full">
-          <DriftWall
-            items={certificates.map((cert, index) => ({
-              image: cert.src,
-              title: cert.title,
-              // Combine the issuer and date into a single string
-              subtitle: `${cert.issuer} - ${cert.dateIssued}`, 
-              index,
-            }))}
-            columns={5}
-            tileWidth={280}
-            tileHeight={190}
-            gap={22}
-            tilt={14}
-            turn={-12}
-            speed={38}
-            lift={70}
-            overlayColor="#060010"
-            onTileClick={(item) => setActiveCertificateIndex(item.index)}
-          />
+        {/* Static grid — flex-wrap + justify-center instead of CSS grid, so an
+            incomplete last row (e.g. 10 items over 4 columns leaves 2) centers
+            itself instead of sticking to the left like grid would. */}
+        <div className="mx-auto flex max-w-6xl flex-wrap justify-center gap-4 px-6 sm:gap-5 lg:gap-6">
+          {certificates.map((cert, index) => (
+            <button
+              key={cert.src}
+              type="button"
+              onClick={() => setActiveCertificateIndex(index)}
+              className={`group relative aspect-[4/3] w-[calc((100%-1rem)/2)] overflow-hidden rounded-xl border border-white/10 bg-[#0b0b12] text-left transition-all duration-500 ease-out hover:-translate-y-1 hover:border-violet-400/50 hover:shadow-[0_18px_40px_-15px_rgba(139,92,246,0.45)] focus-visible:-translate-y-1 focus-visible:border-violet-400/50 focus-visible:outline-none sm:w-[calc((100%-2.5rem)/3)] lg:w-[calc((100%-4.5rem)/4)] ${
+                visible ? "translate-y-0 opacity-100" : "translate-y-6 opacity-0"
+              }`}
+              style={{ transitionDelay: visible ? `${Math.min(index * 40, 400)}ms` : "0ms" }}
+            >
+              <img
+                src={cert.src}
+                alt={cert.title}
+                loading="lazy"
+                decoding="async"
+                draggable={false}
+                className="h-full w-full object-cover opacity-80 saturate-[0.92] transition-all duration-500 ease-out group-hover:scale-105 group-hover:opacity-100 group-hover:saturate-100"
+              />
+              <span
+                className="pointer-events-none absolute inset-0"
+                style={{ background: "linear-gradient(to top, rgba(6,0,16,0.55) 0%, rgba(6,0,16,0.15) 55%, transparent 100%)" }}
+              />
+              <span className="pointer-events-none absolute inset-x-0 bottom-0 flex flex-col gap-0.5 p-3 sm:p-4">
+                <span className="truncate text-sm font-semibold text-white">{cert.title}</span>
+                <span className="truncate text-xs font-medium text-violet-300">
+                  {cert.issuer} · {cert.dateIssued}
+                </span>
+              </span>
+            </button>
+          ))}
         </div>
       </section>
 
