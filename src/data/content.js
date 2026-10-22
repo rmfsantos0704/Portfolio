@@ -277,6 +277,7 @@ theme: {
     badgeColor: "bg-orange-500/10 border-orange-400/30",
     title: "LOX",
     deviceType: "desktop",
+    logo: "/logos/lox.png",
     // Placeholder path — drop the LOX logo/icon file at this location in /public.
     logo: "/logos/lox-cli.png",
     theme: {
