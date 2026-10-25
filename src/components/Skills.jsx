@@ -2,14 +2,16 @@ import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { 
   Video, Heart, Coins, Radio, Smartphone, Layers, Award,
-  // New icons for your certificate skills:
-  FileCode, Code2, Shield, FileText, Sheet, Presentation
+  FileCode, Code2, Shield, FileText, Sheet, Presentation,
+  Terminal
 } from "lucide-react";
 import { skills } from "../data/content";
 import SpotlightCard from "./ui/SpotlightCard";
 import OptionWheel from "./ui/OptionWheel";
 
 const icons = {
+    powerpoint: Presentation,
+  loxCli: Terminal,
   laravel: Video,
   tailwind: Heart,
   mysql: Coins,
@@ -58,7 +60,7 @@ export default function Skills() {
   }, []);
 
   const selectedSkill = skills[selectedIndex] ?? skills[0];
-  const SelectedIcon = icons[selectedSkill.id];
+const SelectedIcon = icons[selectedSkill.id] ?? Code2;
 
   return (
     <section ref={sectionRef} id="skills" className="relative flex min-h-[100dvh] items-center border-t border-white/5 py-20 sm:py-24">
