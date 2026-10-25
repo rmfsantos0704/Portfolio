@@ -91,7 +91,7 @@ export const skills = [
   },
   {
     id: "loxCli",
-    title: "CLI & Local AI Engineering",
+    title: "CLI & Local AI",
     description: "Engineered LOX, an autonomous VS Code CLI tool that orchestrates local LLMs (Ollama) with optimized diff statistics, deterministic regex guards, and domain-aware file grouping to automate and enforce strict atomic Conventional Commits.",
     accent: "bg-purple-500/10 text-purple-400 border border-purple-500/20",
   },
